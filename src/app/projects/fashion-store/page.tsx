@@ -9,12 +9,13 @@ import Link from 'next/link';
 const TrendyBoutique = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<any[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const products = [
     {
       id: 1,
       name: 'Chronos Silver Edition',
-      category: 'Accessories',
+      category: 'Spring 24',
       price: '$1,250.00',
       image: '/projects/fashion-store/watch.png',
       rating: 4.9
@@ -22,12 +23,42 @@ const TrendyBoutique = () => {
     {
       id: 2,
       name: 'Noir Leather Handbag',
-      category: 'Leather Goods',
+      category: 'Women',
       price: '$2,400.00',
       image: '/projects/fashion-store/bag.png',
       rating: 5.0
+    },
+    {
+      id: 3,
+      name: 'Silk Evening Blouse',
+      category: 'Women',
+      price: '$850.00',
+      image: '/projects/fashion-store/hero.png',
+      rating: 4.8
+    },
+    {
+      id: 4,
+      name: 'Tailored Wool Coat',
+      category: 'Men',
+      price: '$1,800.00',
+      image: '/projects/fashion-store/hero.png',
+      rating: 4.9
+    },
+    {
+       id: 5,
+       name: 'Desert Nomad Sandals',
+       category: 'Spring 24',
+       price: '$450.00',
+       image: '/projects/fashion-store/hero.png',
+       rating: 4.7
     }
   ];
+
+  const categories = ['All', 'Spring 24', 'Women', 'Men', 'Our Story'];
+
+  const filteredProducts = selectedCategory === 'All' || selectedCategory === 'Our Story'
+    ? products 
+    : products.filter(p => p.category === selectedCategory);
 
   const addToCart = (product: any) => {
     setCartItems([...cartItems, product]);
@@ -41,11 +72,18 @@ const TrendyBoutique = () => {
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
           <div className="flex items-center gap-12">
             <div className="text-3xl font-black tracking-tighter uppercase">VOGUE</div>
-            <div className="hidden lg:flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500">
-              <a href="#" className="hover:text-black transition-colors">Spring 24</a>
-              <a href="#" className="hover:text-black transition-colors">Women</a>
-              <a href="#" className="hover:text-black transition-colors">Men</a>
-              <a href="#" className="hover:text-black transition-colors">Our Story</a>
+            <div className="hidden lg:flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em]">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`transition-colors cursor-pointer ${
+                    selectedCategory === cat ? 'text-black' : 'text-gray-400 hover:text-black'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
           </div>
           
@@ -129,44 +167,50 @@ const TrendyBoutique = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-          {products.map((p, i) => (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.2 }}
-              className="group cursor-pointer"
-            >
-              <div className="relative aspect-[4/5] bg-gray-50 mb-8 overflow-hidden">
-                <Image 
-                  src={p.image} 
-                  alt={p.name} 
-                  fill 
-                  className="object-cover group-hover:scale-105 transition-transform duration-1000"
-                />
-                <button 
-                  onClick={() => addToCart(p)}
-                  className="absolute bottom-8 left-1/2 -translate-x-1/2 px-8 py-4 bg-white text-black font-bold uppercase text-[10px] tracking-widest shadow-xl opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all"
-                >
-                  Add to Cart
-                </button>
-              </div>
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-xl font-bold mb-1 uppercase tracking-tight">{p.name}</h3>
-                  <p className="text-gray-400 font-bold text-[11px] uppercase tracking-widest mb-2">{p.category}</p>
-                  <div className="flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-black" />
-                    <span className="text-[11px] font-bold">{p.rating} / 5.0</span>
-                  </div>
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 gap-16"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProducts.map((p, i) => (
+              <motion.div
+                key={p.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="group cursor-pointer"
+              >
+                <div className="relative aspect-[4/5] bg-gray-50 mb-8 overflow-hidden">
+                  <Image 
+                    src={p.image} 
+                    alt={p.name} 
+                    fill 
+                    className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                  />
+                  <button 
+                    onClick={() => addToCart(p)}
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 px-8 py-4 bg-white text-black font-bold uppercase text-[10px] tracking-widest shadow-xl opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all"
+                  >
+                    Add to Cart
+                  </button>
                 </div>
-                <div className="text-xl font-black">{p.price}</div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-xl font-bold mb-1 uppercase tracking-tight">{p.name}</h3>
+                    <p className="text-gray-400 font-bold text-[11px] uppercase tracking-widest mb-2">{p.category}</p>
+                    <div className="flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-black" />
+                      <span className="text-[11px] font-bold">{p.rating} / 5.0</span>
+                    </div>
+                  </div>
+                  <div className="text-xl font-black">{p.price}</div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </section>
 
       {/* Cart Sidebar Overlay */}
