@@ -17,7 +17,7 @@ const TrendyBoutique = () => {
       name: 'Chronos Silver Edition',
       category: 'Spring 24',
       price: '$1,250.00',
-      image: 'https://images.unsplash.com/photo-1508685096489-7aacbb719538?auto=format&fit=crop&q=80&w=2000',
+      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=2000',
       rating: 4.9
     },
     {
