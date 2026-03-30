@@ -25,8 +25,18 @@ const DashboardDemo = () => {
 
   return (
     <div className="min-h-screen bg-[#080808] text-white flex font-sans selection:bg-blue-500/30">
+      {/* Project Metadata Bar */}
+      <div className="fixed top-0 left-0 w-full z-[101] bg-[#080808] border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-500">
+          <div className="flex items-center gap-2"><span className="text-blue-500">CLIENT:</span> FORTUNE 500 FINTECH</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">INDUSTRY:</span> QUANTITATIVE ANALYTICS</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">DELIVERABLES:</span> B2B DASHBOARD</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">RESULTS:</span> 60% IMPROVEMENT IN OPS</div>
+        </div>
+      </div>
+
       {/* Sidebar */}
-      <aside className="w-64 bg-[#0A0A0A] border-r border-white/5 flex flex-col p-6 hidden lg:flex">
+      <aside className="w-64 bg-[#0A0A0A] border-r border-white/5 flex flex-col p-6 hidden lg:flex pt-28">
         <div className="flex items-center gap-3 mb-12 px-2">
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
             <PieChart className="w-5 h-5 text-white" />

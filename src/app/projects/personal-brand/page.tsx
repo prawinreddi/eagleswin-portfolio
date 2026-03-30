@@ -3,12 +3,23 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowRight, Globe, Link as LinkIcon, MessageCircle, Mail } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const PersonalBrand = () => {
   return (
     <div className="min-h-screen bg-[#FDFCF8] text-[#1A1A1A] font-serif selection:bg-black selection:text-white">
+      {/* Project Metadata Bar */}
+      <div className="pt-24 bg-[#FDFCF8] border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
+          <div className="flex items-center gap-2"><span className="text-black">CLIENT:</span> ARTHUR STERLING</div>
+          <div className="flex items-center gap-2"><span className="text-black">INDUSTRY:</span> CREATIVE DIRECTION</div>
+          <div className="flex items-center gap-2"><span className="text-black">DELIVERABLES:</span> BRAND IDENTITY</div>
+          <div className="flex items-center gap-2"><span className="text-black">RESULTS:</span> LVMH SHORTLISTED</div>
+        </div>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 mix-blend-difference invert">
+      <nav className="fixed top-0 w-full z-[101] mix-blend-difference invert uppercase">
         <div className="max-w-7xl mx-auto px-10 py-8 flex justify-between items-center text-white">
           <div className="text-xl font-bold tracking-tighter italic">Arthur Sterling</div>
           <div className="hidden md:flex gap-12 text-xs font-bold uppercase tracking-[0.2em]">
@@ -51,15 +62,25 @@ const PersonalBrand = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col md:flex-row gap-12 items-start md:items-center"
+            className="flex flex-col md:flex-row gap-12 items-start"
           >
-            <button className="group relative px-12 py-6 bg-black text-white font-bold uppercase tracking-widest text-[11px] hover:pr-16 transition-all overflow-hidden">
-                <span className="relative z-10">Start Your Journey</span>
-                <ArrowRight className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-0 group-hover:opacity-100 transition-all" />
-            </button>
-            <p className="text-gray-500 max-w-xs text-sm italic leading-relaxed">
-              Award-winning creative executive specializing in high-end brand identity and cinematic experiences.
-            </p>
+            <div className="w-full md:w-1/2">
+                <button className="group relative px-12 py-6 bg-black text-white font-bold uppercase tracking-widest text-[11px] hover:pr-16 transition-all overflow-hidden mb-8">
+                    <span className="relative z-10">Start Your Journey</span>
+                    <ArrowRight className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-0 group-hover:opacity-100 transition-all" />
+                </button>
+                <p className="text-gray-500 max-w-xs text-sm italic leading-relaxed">
+                  Award-winning creative executive specializing in high-end brand identity and cinematic experiences.
+                </p>
+            </div>
+            <div className="w-full md:w-1/2 relative aspect-square bg-gray-100 overflow-hidden">
+                <Image 
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1000" 
+                    alt="Arthur Sterling" 
+                    fill 
+                    className="object-cover grayscale"
+                />
+            </div>
           </motion.div>
         </div>
       </section>

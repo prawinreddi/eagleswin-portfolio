@@ -17,7 +17,7 @@ const TrendyBoutique = () => {
       name: 'Chronos Silver Edition',
       category: 'Spring 24',
       price: '$1,250.00',
-      image: '/projects/fashion-store/watch.png',
+      image: 'https://images.unsplash.com/photo-1547996160-81dfa63595dd?auto=format&fit=crop&q=80&w=2000',
       rating: 4.9
     },
     {
@@ -25,7 +25,7 @@ const TrendyBoutique = () => {
       name: 'Noir Leather Handbag',
       category: 'Women',
       price: '$2,400.00',
-      image: '/projects/fashion-store/bag.png',
+      image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=2000',
       rating: 5.0
     },
     {
@@ -33,7 +33,7 @@ const TrendyBoutique = () => {
       name: 'Silk Evening Blouse',
       category: 'Women',
       price: '$850.00',
-      image: '/projects/fashion-store/hero.png',
+      image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=2000',
       rating: 4.8
     },
     {
@@ -41,7 +41,7 @@ const TrendyBoutique = () => {
       name: 'Tailored Wool Coat',
       category: 'Men',
       price: '$1,800.00',
-      image: '/projects/fashion-store/hero.png',
+      image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=2000',
       rating: 4.9
     },
     {
@@ -49,7 +49,7 @@ const TrendyBoutique = () => {
        name: 'Desert Nomad Sandals',
        category: 'Spring 24',
        price: '$450.00',
-       image: '/projects/fashion-store/hero.png',
+       image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&q=80&w=2000',
        rating: 4.7
     }
   ];
@@ -67,8 +67,18 @@ const TrendyBoutique = () => {
 
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
+      {/* Project Metadata Bar */}
+      <div className="pt-24 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
+          <div className="flex items-center gap-2"><span className="text-black">CLIENT:</span> VOGUE BOUTIQUE</div>
+          <div className="flex items-center gap-2"><span className="text-black">INDUSTRY:</span> E-COMMERCE LUXURY</div>
+          <div className="flex items-center gap-2"><span className="text-black">DELIVERABLES:</span> HEADLESS STOREFRONT</div>
+          <div className="flex items-center gap-2"><span className="text-black">RESULTS:</span> 22% CONVERSION LIFT</div>
+        </div>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100">
+      <nav className="fixed top-0 w-full z-[101] bg-white/70 backdrop-blur-xl border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
           <div className="flex items-center gap-12">
             <div className="text-3xl font-black tracking-tighter uppercase">VOGUE</div>
@@ -140,12 +150,12 @@ const TrendyBoutique = () => {
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
             className="relative h-[80vh] w-full"
           >
-            <Image 
-              src="/projects/fashion-store/hero.png" 
-              alt="Model" 
-              fill 
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-[2s]"
-            />
+          <Image 
+            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=2000" 
+            alt="Model" 
+            fill 
+            className="object-cover grayscale hover:grayscale-0 transition-all duration-[2s]"
+          />
           </motion.div>
         </div>
       </section>

@@ -15,7 +15,7 @@ const SkylineRealEstate = () => {
       beds: 5,
       baths: 6,
       sqft: '8,500',
-      image: '/projects/real-estate/hero.png',
+      image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=2071',
       tag: 'For Sale'
     },
     {
@@ -26,7 +26,7 @@ const SkylineRealEstate = () => {
       beds: 3,
       baths: 4,
       sqft: '4,200',
-      image: '/projects/real-estate/apartment.png',
+      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2070',
       tag: 'New Construction'
     },
     {
@@ -37,7 +37,7 @@ const SkylineRealEstate = () => {
       beds: 4,
       baths: 3,
       sqft: '3,800',
-      image: '/projects/real-estate/interior.png',
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2070',
       tag: 'Sale Out'
     }
   ];
@@ -62,11 +62,21 @@ const SkylineRealEstate = () => {
         </div>
       </nav>
 
+      {/* Project Metadata Bar */}
+      <div className="pt-24 bg-gray-950 border-b border-gray-900">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-500">
+          <div className="flex items-center gap-2"><span className="text-blue-500">CLIENT:</span> SKYLINE ESTATES</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">INDUSTRY:</span> LUXURY REAL ESTATE</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">DELIVERABLES:</span> FULL DIGITAL PORTAL</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">RESULTS:</span> 34% INCREASE IN LEADS</div>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center">
+      <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image 
-            src="/projects/real-estate/hero.png" 
+            src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=2071" 
             alt="Luxury Villa" 
             fill 
             className="object-cover opacity-60"

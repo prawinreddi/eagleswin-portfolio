@@ -22,8 +22,18 @@ const EliteBooking = () => {
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#1D1D1D] font-sans selection:bg-[#E5DACE]">
+      {/* Project Metadata Bar */}
+      <div className="pt-24 bg-[#FDFBF7] border-b border-[#F2EDE4]">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
+          <div className="flex items-center gap-2"><span className="text-black">CLIENT:</span> ELITE WELLNESS GROUP</div>
+          <div className="flex items-center gap-2"><span className="text-black">INDUSTRY:</span> LUXURY HOSPITALITY</div>
+          <div className="flex items-center gap-2"><span className="text-black">DELIVERABLES:</span> BOOKING & CRM</div>
+          <div className="flex items-center gap-2"><span className="text-black">RESULTS:</span> 98% HAPPY BOOKINGS</div>
+        </div>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-[#FDFBF7]/80 backdrop-blur-xl border-b border-[#F2EDE4]">
+      <nav className="fixed top-0 w-full z-101 bg-[#FDFBF7]/80 backdrop-blur-xl border-b border-[#F2EDE4]">
         <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
           <div className="text-2xl font-light tracking-[0.2em] uppercase">ELITE<span className="font-bold">SPA</span></div>
           <div className="flex items-center gap-6">

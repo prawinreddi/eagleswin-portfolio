@@ -33,8 +33,18 @@ const SaaSPro = () => {
         </div>
       </nav>
 
+      {/* Project Metadata Bar */}
+      <div className="pt-24 bg-[#050505] border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-500">
+          <div className="flex items-center gap-2"><span className="text-blue-500">CLIENT:</span> FAST-GROWTH B2B</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">INDUSTRY:</span> ENTERPRISE AUTOMATION</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">DELIVERABLES:</span> CLOUD NATIVE PLATFORM</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">RESULTS:</span> 40% REDUCTION IN COST</div>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 overflow-hidden">
+      <section className="relative pt-20 pb-32 px-6 overflow-hidden">
         {/* Background Glows */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/10 blur-[120px] -z-10 rounded-full" />
         <div className="absolute -top-[20%] right-[10%] w-[400px] h-[400px] bg-purple-600/10 blur-[100px] -z-10 rounded-full" />
