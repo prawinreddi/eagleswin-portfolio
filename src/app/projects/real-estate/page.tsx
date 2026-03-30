@@ -81,6 +81,7 @@ const SkylineRealEstate = () => {
             fill 
             className="object-cover opacity-60"
             priority
+            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent" />
         </div>
@@ -152,6 +153,7 @@ const SkylineRealEstate = () => {
                   alt={prop.title} 
                   fill 
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  unoptimized
                 />
                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
                   {prop.tag}

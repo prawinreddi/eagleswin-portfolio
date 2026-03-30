@@ -155,6 +155,7 @@ const TrendyBoutique = () => {
             alt="Model" 
             fill 
             className="object-cover grayscale hover:grayscale-0 transition-all duration-[2s]"
+            unoptimized
           />
           </motion.div>
         </div>
@@ -198,6 +199,7 @@ const TrendyBoutique = () => {
                     alt={p.name} 
                     fill 
                     className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                    unoptimized
                   />
                   <button 
                     onClick={() => addToCart(p)}
@@ -255,7 +257,7 @@ const TrendyBoutique = () => {
                   cartItems.map((item, idx) => (
                     <div key={idx} className="flex gap-6 items-center">
                       <div className="relative w-24 h-24 bg-gray-50 flex-shrink-0">
-                        <Image src={item.image} alt={item.name} fill className="object-cover" />
+                        <Image src={item.image} alt={item.name} fill className="object-cover" unoptimized />
                       </div>
                       <div className="flex-1">
                         <h4 className="font-bold uppercase text-[13px] mb-1">{item.name}</h4>

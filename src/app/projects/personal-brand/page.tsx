@@ -79,6 +79,7 @@ const PersonalBrand = () => {
                     alt="Arthur Sterling" 
                     fill 
                     className="object-cover grayscale"
+                    unoptimized
                 />
             </div>
           </motion.div>
