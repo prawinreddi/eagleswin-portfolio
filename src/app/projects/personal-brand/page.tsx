@@ -108,10 +108,10 @@ const PersonalBrand = () => {
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Project placeholders with minimalist aesthetic */}
             {[
-              { title: 'Zenith Labs', desc: 'Luxury Skincare Identity' },
-              { title: 'Nocturne', desc: 'Cinema Advertising' },
-              { title: 'Alpha X', desc: 'Automotive Digital' },
-              { title: 'Prime One', desc: 'Financial Tech Branding' }
+              { title: 'Zenith Labs', desc: 'Luxury Skincare Identity', img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=1000' },
+              { title: 'Nocturne', desc: 'Cinema Advertising', img: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=1000' },
+              { title: 'Alpha X', desc: 'Automotive Digital', img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1000' },
+              { title: 'Prime One', desc: 'Financial Tech Branding', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000' }
             ].map((p, i) => (
               <motion.div
                 key={i}
@@ -121,9 +121,18 @@ const PersonalBrand = () => {
                 transition={{ delay: i * 0.1 }}
                 className="group relative cursor-pointer"
               >
-                <div className="aspect-[3/4] bg-[#2A2A2A] rounded-sm mb-6 flex items-center justify-center p-12 overflow-hidden">
-                   <div className="text-4xl font-black italic text-white/5 uppercase select-none rotate-12 group-hover:rotate-0 transition-transform duration-700">
-                     {p.title}
+                <div className="aspect-[3/4] bg-[#2A2A2A] rounded-sm mb-6 overflow-hidden">
+                   <Image 
+                     src={p.img} 
+                     alt={p.title} 
+                     fill 
+                     className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100"
+                     unoptimized
+                   />
+                   <div className="absolute inset-0 flex items-center justify-center p-12">
+                      <div className="text-4xl font-black italic text-white/10 uppercase select-none rotate-12 group-hover:rotate-0 transition-transform duration-700">
+                        {p.title}
+                      </div>
                    </div>
                 </div>
                 <div className="flex justify-between items-end">
