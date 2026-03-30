@@ -2,70 +2,68 @@
 
 import { motion } from 'framer-motion';
 import { ExternalLink, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const Projects = () => {
   const projects = [
     {
-      badge: 'LIVE',
-      title: 'BrandSite Pro',
+      badge: 'LIVE DEMO',
+      title: 'Skyline Real Estate',
       subtitle: 'Business Website',
-      problem: 'Local businesses losing customers due to no online presence',
-      solution: 'Built with Next.js, Tailwind CSS, fully responsive with SEO optimization',
-      result: 'Professional brand identity that builds instant customer trust',
+      problem: 'Real estate agencies losing high-end clients due to outdated, non-responsive web presence.',
+      solution: 'Built a premium, high-res property portal with modern search and interactive listings.',
+      result: 'Professional brand identity that builds instant trust with luxury property buyers.',
+      link: '/projects/real-estate',
     },
     {
-      badge: 'DEMO',
-      title: 'ShopEase',
+      badge: 'LIVE DEMO',
+      title: 'Vogue Boutique',
       subtitle: 'E-Commerce Platform',
-      problem: 'Small retailers unable to sell online with poor checkout experience',
-      solution: 'Shopify-based store with Stripe payment, product filters, cart system',
-      result: 'Clean conversion-focused shopping experience with 40% better UX',
+      problem: 'Fashion retailers struggling with low mobile conversion and cluttered shopping experiences.',
+      solution: 'High-end minimalist store with smooth transitions, interactive cart, and premium visuals.',
+      result: 'Clean, conversion-focused shopping journey designed for luxury fashion brands.',
+      link: '/projects/fashion-store',
     },
     {
-      badge: 'CONCEPT',
-      title: 'LaunchPad',
+      badge: 'LIVE DEMO',
+      title: 'NexFlow SaaS',
       subtitle: 'Landing Page',
-      problem: 'Businesses running ads but getting zero conversions from their pages',
-      solution: 'High-converting landing page with clear CTA, testimonials, and fast load time',
-      result: 'Optimized page structure designed to convert visitors into leads',
+      problem: 'SaaS startups failing to communicate complexity simply, leading to high bounce rates.',
+      solution: 'Ultra-modern tech landing page with glassmorphism, animated UI, and lead-gen focus.',
+      result: 'High-impact landing page structure that turns complex features into clear value.',
+      link: '/projects/saas-pro',
     },
     {
-      badge: 'LIVE',
-      title: 'CreativePort',
-      subtitle: 'Portfolio Website',
-      problem: 'Freelancers losing clients due to unprofessional or no portfolio',
-      solution: 'Minimal dark-theme portfolio with smooth animations and project showcase',
-      result: 'Client-ready portfolio that builds credibility and attracts better projects',
+      badge: 'LIVE DEMO',
+      title: 'Sterling Brand',
+      subtitle: 'Premium Portfolio',
+      problem: 'Executives and creatives missing out on high-tier opportunities due to basic portfolios.',
+      solution: 'Bold typographic personal brand with editorial feel and premium entrance animations.',
+      result: 'Stunning professional presence that positions the individual as a top-tier industry leader.',
+      link: '/projects/personal-brand',
     },
     {
-      badge: 'DEMO',
-      title: 'AdminFlow',
+      badge: 'LIVE DEMO',
+      title: 'FinTrack CRM',
       subtitle: 'Dashboard UI',
-      problem: 'Business owners struggling with complex and confusing admin panels',
-      solution: 'Clean React dashboard with data tables, charts, and role-based access',
-      result: 'Intuitive interface that reduces management time by 60%',
+      problem: 'Financial teams overwhelmed by complex data without clear visual hierarchy or speed.',
+      solution: 'Dark-mode analytics dashboard with interactive SVG charts and production-ready components.',
+      result: 'Highly intuitive administrative interface designed for efficiency and data clarity.',
+      link: '/projects/dashboard',
     },
     {
-      badge: 'LIVE',
-      title: 'BookNow',
+      badge: 'LIVE DEMO',
+      title: 'Elite Spa & Wellness',
       subtitle: 'Booking Website',
-      problem: 'Service businesses losing bookings due to manual phone scheduling',
-      solution: 'Online booking system with calendar, time slots, and email confirmation',
-      result: '24/7 automated booking that eliminates scheduling conflicts',
+      problem: 'Wellness centers losing revenue to phone-tag and unorganized scheduling systems.',
+      solution: 'Minimalist booking engine with custom calendar flow and step-by-step confirmation.',
+      result: 'Seamless 24/7 automated booking experience for high-end boutique services.',
+      link: '/projects/booking',
     },
   ];
 
   const getBadgeColor = (badge: string) => {
-    switch (badge) {
-      case 'LIVE':
-        return 'bg-green-500';
-      case 'DEMO':
-        return 'bg-blue-500';
-      case 'CONCEPT':
-        return 'bg-purple-500';
-      default:
-        return 'bg-gray-500';
-    }
+    return 'bg-blue-600';
   };
 
   return (
@@ -79,10 +77,10 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="text-gradient">Projects</span>
+            <span className="text-gradient">Featured Solutions</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Real-world solutions delivering measurable results
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto italic font-medium">
+            Strategic "Real-World" projects designed to drive results
           </p>
         </motion.div>
 
@@ -95,77 +93,68 @@ const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-blue-500 transition-all duration-300"
+              className="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-blue-500 transition-all duration-300"
             >
               {/* Badge and Title */}
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-8">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className={`px-3 py-1 ${getBadgeColor(project.badge)} text-white text-xs font-semibold rounded-full`}>
+                    <span className={`px-3 py-1 ${getBadgeColor(project.badge)} text-white text-[10px] font-black uppercase tracking-widest rounded-full`}>
                       {project.badge}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-1">
+                  <h3 className="text-3xl font-bold text-white mb-1 tracking-tight">
                     {project.title}
                   </h3>
-                  <p className="text-blue-400 font-medium">
+                  <p className="text-blue-400 font-bold text-xs uppercase tracking-widest">
                     {project.subtitle}
                   </p>
                 </div>
               </div>
 
-              {/* Mockup Image Placeholder */}
-              <div className="w-full h-48 bg-gray-800 rounded-lg mb-6 flex items-center justify-center border border-gray-700">
-                <span className="text-gray-600 text-lg font-medium">
-                  {project.title} Mockup
-                </span>
-              </div>
-
               {/* Case Study Content */}
-              <div className="space-y-4">
+              <div className="space-y-6 mb-10">
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                    Problem
+                  <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2 font-serif italic">
+                    The Problem
                   </h4>
-                  <p className="text-gray-300">
+                  <p className="text-gray-400 text-sm leading-relaxed">
                     {project.problem}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                    Solution
+                  <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2 font-serif italic">
+                    The Solution
                   </h4>
-                  <p className="text-gray-300">
+                  <p className="text-gray-300 text-sm leading-relaxed">
                     {project.solution}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                    Result
-                  </h4>
-                  <p className="text-gray-300">
-                    {project.result}
                   </p>
                 </div>
               </div>
 
-              {/* View Details Button */}
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="mt-6 w-full py-3 bg-gray-800 text-blue-400 font-semibold rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center gap-2 border border-gray-700 hover:border-blue-500 cursor-pointer"
-              >
-                View Details
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
+              {/* View Live Demo Button */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    href={project.link}
+                    className="flex-1 py-4 bg-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl hover:bg-gray-200 transition-all flex items-center justify-center gap-2"
+                  >
+                    Launch Live Demo
+                    <ExternalLink className="w-4 h-4" />
+                  </Link>
+                  <button
+                    onClick={() => {
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                          contactSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }}
+                    className="flex-1 py-4 bg-gray-800 text-gray-300 font-bold uppercase tracking-widest text-[11px] rounded-xl hover:bg-gray-700 transition-all flex items-center justify-center gap-2 border border-gray-700 hover:border-blue-500"
+                  >
+                    Discuss Success
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+              </div>
             </motion.div>
           ))}
         </div>
