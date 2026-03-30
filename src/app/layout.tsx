@@ -8,13 +8,21 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Eagle$Win - Web Designer & Developer",
-  description: "I Build Websites That Grow Your Business - Specializing in Business Websites, E-Commerce, Landing Pages, Portfolios, Dashboard UI & Booking Websites",
-  keywords: "web designer, web developer, business websites, e-commerce, landing pages, portfolio, dashboard, booking websites",
+  title: "Eagle$Win | High-Performance Web Development & Design",
+  description: "I Build High-Performance Websites That Drive Revenue. Specializing in Business Websites, E-Commerce, Landing Pages, Dashboards & Booking Systems. 100% Satisfaction Guaranteed.",
+  keywords: "web designer India, next.js developer, freelance web developer, e-commerce developer, business website designer, landing page expert, Eagle$Win",
+  authors: [{ name: "Eagle$Win" }],
   openGraph: {
-    title: "Eagle$Win - Web Designer & Developer",
-    description: "I Build Websites That Grow Your Business",
+    title: "Eagle$Win | High-Performance Web Development",
+    description: "I Build High-Performance Websites That Drive Revenue.",
     type: "website",
+    url: "https://eagleswin-portfolio.vercel.app",
+    siteName: "Eagle$Win Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Eagle$Win | Web Development & Design",
+    description: "Building websites that grow your business.",
   },
 };
 

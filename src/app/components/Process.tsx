@@ -8,26 +8,26 @@ const Process = () => {
     {
       icon: Search,
       number: '01',
-      title: 'Discovery',
-      description: 'Understanding your business goals, target audience, and project requirements',
+      title: 'Market Analysis',
+      description: 'Analyzing your industry, competitors, and target audience to find the best growth opportunities.',
     },
     {
       icon: Lightbulb,
       number: '02',
-      title: 'Strategy',
-      description: 'Creating wireframes, design mockups, and a clear development roadmap',
+      title: 'Revenue Roadmap',
+      description: 'Crafting a strategic design and development plan focused on maximizing your conversion rates.',
     },
     {
       icon: Code,
       number: '03',
-      title: 'Development',
-      description: 'Building your website with clean code, smooth animations, and mobile-first approach',
+      title: 'Growth-Driven Build',
+      description: 'Developing a high-performance system with cutting-edge tech that scales with your business.',
     },
     {
       icon: Rocket,
       number: '04',
-      title: 'Deployment',
-      description: 'Launching with full testing, performance optimization, and post-launch support',
+      title: 'Launch & Optimization',
+      description: 'Deploying with full speed optimization, SEO, and ongoing support for continuous results.',
     },
   ];
 

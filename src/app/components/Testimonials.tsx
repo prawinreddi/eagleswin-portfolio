@@ -7,20 +7,20 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: 'Rajesh Kumar',
-      role: 'Restaurant Owner',
-      content: 'Eagle$Win built our restaurant website in just 5 days. Professional, fast, and exactly what we needed. Highly recommended!',
+      role: 'Business Owner',
+      content: 'Our revenue increased by 30% within just 3 months of launching the new site. Eagle$Win truly understands business growth and ROI.',
       rating: 5,
     },
     {
       name: 'Priya Sharma',
-      role: 'Boutique Owner',
-      content: 'Our online store looks amazing! We started getting orders within the first week. Best investment for our business.',
+      role: 'Retail Entrepreneur',
+      content: 'A game-changer for our boutique. The e-commerce experience is so seamless that our online orders doubled in the first month!',
       rating: 5,
     },
     {
       name: 'Arun Mehta',
-      role: 'Fitness Trainer',
-      content: 'My booking website is now live and clients can book sessions anytime. Saved me hours of phone calls every week!',
+      role: 'Growth Consultant',
+      content: 'The custom dashboard UI has completely streamlined our operations. We’ve reduced manual administrative work by over 70%!',
       rating: 5,
     },
   ];
