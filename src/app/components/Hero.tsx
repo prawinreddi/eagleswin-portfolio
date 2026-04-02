@@ -13,8 +13,9 @@ const MagneticButton = ({ children, className, onClick }: any) => {
   const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
   const handleMouse = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!ref.current) return;
     const { clientX, clientY } = e;
-    const { height, width, left, top } = ref.current!.getBoundingClientRect();
+    const { height, width, left, top } = ref.current.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
     x.set(middleX * 0.3);
@@ -63,8 +64,12 @@ export default function Hero() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const glowX = useSpring(useTransform(mouseX, [0, 1], [-20, 120]), { stiffness: 50, damping: 20 });
-  const glowY = useSpring(useTransform(mouseY, [0, 1], [-20, 120]), { stiffness: 50, damping: 20 });
+  const rawGlowX = useTransform(mouseX, [0, 1], [-20, 120]);
+  const rawGlowY = useTransform(mouseY, [0, 1], [-20, 120]);
+  const glowX = useSpring(rawGlowX, { stiffness: 50, damping: 20 });
+  const glowY = useSpring(rawGlowY, { stiffness: 50, damping: 20 });
+  const glowLeft = useTransform(glowX, v => `${v}%`);
+  const glowTop = useTransform(glowY, v => `${v}%`);
 
   // Staggered text reveal variants
   const containerVars = {
@@ -91,20 +96,17 @@ export default function Hero() {
   return (
     <section ref={containerRef} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Dynamic Cinematic Lighting */}
-      {isClient && (
-        <>
-          <motion.div
-            className="absolute w-[800px] h-[800px] rounded-full blur-[120px] opacity-20 pointer-events-none mix-blend-screen bg-[#00e5ff]"
-            style={{
-              left: useTransform(glowX, v => `${v}%`),
-              top: useTransform(glowY, v => `${v}%`),
-              transform: "translate(-50%, -50%)",
-            }}
-          />
-          {/* Subtle slow pulsing background orb */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-radial from-white/[0.03] to-transparent rounded-full blur-[100px] animate-pulse-glow" />
-        </>
-      )}
+      <motion.div
+        className="absolute w-[800px] h-[800px] rounded-full blur-[120px] pointer-events-none mix-blend-screen bg-[#00e5ff]"
+        style={{
+          left: glowLeft,
+          top: glowTop,
+          transform: "translate(-50%, -50%)",
+          opacity: isClient ? 0.2 : 0,
+        }}
+      />
+      {/* Subtle slow pulsing background orb */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-radial from-white/[0.03] to-transparent rounded-full blur-[100px] animate-pulse-glow" />
 
       {/* Grid Overlay Texture */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" style={{ maskImage: 'radial-gradient(ellipse at center, black, transparent 80%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black, transparent 80%)' }} />

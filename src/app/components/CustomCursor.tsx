@@ -14,6 +14,12 @@ export default function CustomCursor() {
 
     const updateHoverState = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      
+      if (!target || !target.tagName) {
+        setIsHovering(false);
+        return;
+      }
+
       // Check if the element or its parent is clickable
       const isClickable = 
         window.getComputedStyle(target).cursor === 'pointer' ||
