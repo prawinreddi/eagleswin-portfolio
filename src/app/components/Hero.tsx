@@ -64,12 +64,11 @@ export default function Hero() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const rawGlowX = useTransform(mouseX, [0, 1], [-20, 120]);
-  const rawGlowY = useTransform(mouseY, [0, 1], [-20, 120]);
-  const glowX = useSpring(rawGlowX, { stiffness: 50, damping: 20 });
-  const glowY = useSpring(rawGlowY, { stiffness: 50, damping: 20 });
-  const glowLeft = useTransform(glowX, v => `${v}%`);
-  const glowTop = useTransform(glowY, v => `${v}%`);
+  // Use viewport-relative translate for GPU-composited animation (no layout reflow)
+  const glowXraw = useTransform(mouseX, [0, 1], [-40, 40]);
+  const glowYraw = useTransform(mouseY, [0, 1], [-40, 40]);
+  const glowX = useSpring(glowXraw, { stiffness: 40, damping: 25 });
+  const glowY = useSpring(glowYraw, { stiffness: 40, damping: 25 });
 
   // Staggered text reveal variants
   const containerVars = {
@@ -99,10 +98,14 @@ export default function Hero() {
       <motion.div
         className="absolute w-[800px] h-[800px] rounded-full blur-[120px] pointer-events-none mix-blend-screen bg-[#00e5ff]"
         style={{
-          left: glowLeft,
-          top: glowTop,
-          transform: "translate(-50%, -50%)",
+          top: '50%',
+          left: '50%',
+          translateX: '-50%',
+          translateY: '-50%',
+          x: glowX,
+          y: glowY,
           opacity: isClient ? 0.2 : 0,
+          willChange: 'transform',
         }}
       />
       {/* Subtle slow pulsing background orb */}

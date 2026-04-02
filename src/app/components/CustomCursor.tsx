@@ -1,83 +1,96 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+
+  const springConfig = { stiffness: 300, damping: 28, mass: 0.5 };
+  const dotX = useSpring(cursorX, { stiffness: 600, damping: 40, mass: 0.2 });
+  const dotY = useSpring(cursorY, { stiffness: 600, damping: 40, mass: 0.2 });
+  const ringX = useSpring(cursorX, springConfig);
+  const ringY = useSpring(cursorY, springConfig);
+
+  const isHoveringRef = useRef(false);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    const move = (e: MouseEvent) => {
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
     };
 
-    const updateHoverState = (e: MouseEvent) => {
+    const over = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      
-      if (!target || !target.tagName) {
-        setIsHovering(false);
-        return;
-      }
-
-      // Check if the element or its parent is clickable
-      const isClickable = 
-        window.getComputedStyle(target).cursor === 'pointer' ||
-        target.tagName.toLowerCase() === 'a' ||
-        target.tagName.toLowerCase() === 'button' ||
+      if (!target?.tagName) return;
+      const tag = target.tagName.toLowerCase();
+      const isClickable =
+        tag === 'a' ||
+        tag === 'button' ||
         target.closest('a') !== null ||
-        target.closest('button') !== null;
-      
-      setIsHovering(isClickable);
+        target.closest('button') !== null ||
+        window.getComputedStyle(target).cursor === 'pointer';
+
+      if (isClickable !== isHoveringRef.current) {
+        isHoveringRef.current = isClickable;
+        if (dotRef.current) {
+          dotRef.current.style.transform = isClickable ? 'scale(3.5)' : 'scale(1)';
+          dotRef.current.style.opacity = isClickable ? '0.7' : '1';
+        }
+        if (ringRef.current) {
+          ringRef.current.style.opacity = isClickable ? '0' : '0.5';
+          ringRef.current.style.transform = isClickable ? 'scale(1.5)' : 'scale(1)';
+        }
+      }
     };
 
-    window.addEventListener('mousemove', updateMousePosition);
-    window.addEventListener('mouseover', updateHoverState);
+    window.addEventListener('mousemove', move, { passive: true });
+    window.addEventListener('mouseover', over, { passive: true });
 
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
-      window.removeEventListener('mouseover', updateHoverState);
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseover', over);
     };
-  }, []);
+  }, [cursorX, cursorY]);
 
   return (
     <>
+      {/* Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference flex items-center justify-center"
-        animate={{
-          x: mousePosition.x - 8,
-          y: mousePosition.y - 8,
-          scale: isHovering ? 4 : 1,
+        ref={dotRef}
+        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
+        style={{
+          x: dotX,
+          y: dotY,
+          translateX: '-50%',
+          translateY: '-50%',
+          width: 10,
+          height: 10,
+          borderRadius: '50%',
+          backgroundColor: 'white',
+          willChange: 'transform',
+          transition: 'transform 0.15s ease, opacity 0.15s ease',
         }}
-        transition={{
-          type: 'tween',
-          ease: 'backOut',
-          duration: 0.15,
-        }}
-      >
-        {isHovering && (
-          <motion.span 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            className="text-[3px] text-black font-bold uppercase"
-          >
-            Click
-          </motion.span>
-        )}
-      </motion.div>
+      />
+      {/* Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-white/30 rounded-full pointer-events-none z-[9998]"
-        animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
-          scale: isHovering ? 1.5 : 1,
-          opacity: isHovering ? 0 : 1,
-        }}
-        transition={{
-          type: 'spring',
-          damping: 30,
-          stiffness: 200,
-          mass: 0.5,
+        ref={ringRef}
+        className="fixed top-0 left-0 pointer-events-none z-[9998]"
+        style={{
+          x: ringX,
+          y: ringY,
+          translateX: '-50%',
+          translateY: '-50%',
+          width: 36,
+          height: 36,
+          borderRadius: '50%',
+          border: '1px solid rgba(255,255,255,0.5)',
+          willChange: 'transform',
+          opacity: 0.5,
+          transition: 'transform 0.2s ease, opacity 0.2s ease',
         }}
       />
     </>
