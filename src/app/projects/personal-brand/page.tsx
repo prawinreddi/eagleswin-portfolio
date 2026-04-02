@@ -9,12 +9,12 @@ const PersonalBrand = () => {
   return (
     <div className="min-h-screen bg-[#FDFCF8] text-[#1A1A1A] font-serif selection:bg-black selection:text-white">
       {/* Project Metadata Bar */}
-      <div className="pt-24 bg-[#FDFCF8] border-b border-gray-100">
+      <div className="bg-[#FDFCF8] border-b border-gray-100 relative z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
           <div className="flex items-center gap-2"><span className="text-black">CLIENT:</span> ARTHUR STERLING</div>
           <div className="flex items-center gap-2"><span className="text-black">INDUSTRY:</span> CREATIVE DIRECTION</div>
           <div className="flex items-center gap-2"><span className="text-black">DELIVERABLES:</span> BRAND IDENTITY</div>
-          <div className="flex items-center gap-2"><span className="text-black">RESULTS:</span> LVMH SHORTLISTED</div>
+          <div className="flex items-center gap-2 font-black transition-colors hover:text-black"><span className="text-black">RESULTS:</span> LVMH SHORTLISTED</div>
         </div>
       </div>
 
@@ -121,12 +121,12 @@ const PersonalBrand = () => {
                 transition={{ delay: i * 0.1 }}
                 className="group relative cursor-pointer"
               >
-                <div className="aspect-[3/4] bg-[#2A2A2A] rounded-sm mb-6 overflow-hidden">
+                <div className="aspect-[3/4] bg-[#2A2A2A] rounded-sm mb-6 overflow-hidden relative">
                    <Image 
                      src={p.img} 
                      alt={p.title} 
                      fill 
-                     className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100"
+                     className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-100"
                      unoptimized
                    />
                    <div className="absolute inset-0 flex items-center justify-center p-12">

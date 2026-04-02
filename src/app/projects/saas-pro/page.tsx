@@ -15,29 +15,39 @@ const SaaSPro = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-blue-500/30">
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-blue-500/30 flex flex-col">
+      {/* Project Metadata Bar */}
+      <div className="bg-[#0A0A0A] border-b border-white/10 relative z-[60]">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
+          <div className="flex items-center gap-2"><span className="text-blue-500">CLIENT:</span> FAST-GROWTH B2B</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">INDUSTRY:</span> ENTERPRISE AUTOMATION</div>
+          <div className="flex items-center gap-2"><span className="text-blue-500">DELIVERABLES:</span> CLOUD NATIVE PLATFORM</div>
+          <div className="flex items-center gap-2 font-black transition-colors hover:text-blue-400"><span className="text-blue-500">RESULTS:</span> 40% REDUCTION IN COST</div>
+        </div>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-[#050505]/50 backdrop-blur-xl border-b border-white/5">
+      <nav className="sticky top-0 w-full z-50 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 font-black uppercase tracking-tighter">
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
               <Zap className="w-5 h-5 text-white fill-white" />
             </div>
-            <span className="text-xl font-bold tracking-tight">NexFlow</span>
+            <span className="text-xl">NexFlow</span>
           </div>
-          <div className="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+          <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">
             <a href="#" className="hover:text-white transition-colors">Product</a>
             <a href="#" className="hover:text-white transition-colors">Solutions</a>
             <a href="#" className="hover:text-white transition-colors">Pricing</a>
             <a href="#" className="hover:text-white transition-colors">Docs</a>
           </div>
           <div className="flex items-center gap-4">
-            <Link href="/" className="px-5 py-2 bg-white/5 hover:bg-white/10 text-white text-sm font-medium rounded-full border border-white/10 transition-all cursor-pointer">
+            <Link href="/" className="px-5 py-2 bg-white/5 hover:bg-white/10 text-white text-[11px] font-bold uppercase tracking-widest rounded-full border border-white/10 transition-all cursor-pointer">
               Back to Portfolio
             </Link>
             <button 
               onClick={() => setShowModal(true)}
-              className="hidden sm:block px-5 py-2 bg-blue-600 text-white text-sm font-bold rounded-full hover:bg-blue-700 transition-all cursor-pointer shadow-lg shadow-blue-600/20"
+              className="hidden sm:block px-5 py-2 bg-blue-600 text-white text-[11px] font-bold uppercase tracking-widest rounded-full hover:bg-blue-700 transition-all cursor-pointer shadow-lg shadow-blue-600/20"
             >
               Get Started
             </button>
@@ -45,53 +55,36 @@ const SaaSPro = () => {
         </div>
       </nav>
 
-      {/* Project Metadata Bar */}
-      <div className="pt-24 bg-[#0A0A0A] border-b border-white/10 relative z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
-          <div className="flex items-center gap-2 transition-colors hover:text-blue-400 cursor-default">
-            <span className="text-blue-500">CLIENT:</span> FAST-GROWTH B2B
-          </div>
-          <div className="flex items-center gap-2 transition-colors hover:text-blue-400 cursor-default">
-            <span className="text-blue-500">INDUSTRY:</span> ENTERPRISE AUTOMATION
-          </div>
-          <div className="flex items-center gap-2 transition-colors hover:text-blue-400 cursor-default">
-            <span className="text-blue-500">DELIVERABLES:</span> CLOUD NATIVE PLATFORM
-          </div>
-          <div className="flex items-center gap-2 transition-colors hover:text-blue-400 cursor-default font-black">
-            <span className="text-blue-500">RESULTS:</span> 40% REDUCTION IN COST
-          </div>
-        </div>
-      </div>
+      <div className="flex-1">
+        {/* Hero Section */}
+        <section className="relative pt-20 pb-32 px-6 overflow-hidden">
+          {/* Background Glows */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/10 blur-[120px] -z-10 rounded-full" />
+          <div className="absolute -top-[20%] right-[10%] w-[400px] h-[400px] bg-purple-600/10 blur-[100px] -z-10 rounded-full" />
 
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-32 px-6 overflow-hidden">
-        {/* Background Glows */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/10 blur-[120px] -z-10 rounded-full" />
-        <div className="absolute -top-[20%] right-[10%] w-[400px] h-[400px] bg-purple-600/10 blur-[100px] -z-10 rounded-full" />
+          <div className="max-w-5xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-blue-400 text-xs font-bold uppercase tracking-widest mb-10"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+              </span>
+              V2.0 is now live
+            </motion.div>
 
-        <div className="max-w-5xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-blue-400 text-xs font-bold uppercase tracking-widest mb-10"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-            </span>
-            V2.0 is now live
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05]"
-          >
-            Deploy <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">faster</span> with <br />
-            Modern Intelligence.
-          </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-6xl md:text-8xl font-black tracking-tight mb-8 leading-[1.05]"
+            >
+              Deploy <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 italic">faster</span> with <br />
+              Modern Intelligence.
+            </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -299,7 +292,8 @@ const SaaSPro = () => {
         )}
       </AnimatePresence>
     </div>
-  );
+  </div>
+);
 };
 
 export default SaaSPro;

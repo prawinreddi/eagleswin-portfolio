@@ -1,177 +1,204 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Phone, MessageCircle } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { useEffect, useState, useRef } from 'react';
 
-const Hero = () => {
-  const [isClient, setIsClient] = useState(false);
+const MagneticButton = ({ children, className, onClick }: any) => {
+  const ref = useRef<HTMLButtonElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
-  // Generate deterministic positions based on index
-  const generateParticles = () => {
-    return [...Array(50)].map((_, i) => {
-      const index = i + 1;
-      // Use deterministic calculations based on index
-      const left = ((index * 137.5) % 100); // Golden angle approximation
-      const top = ((index * 89) % 100); // Prime number for distribution
-      const duration = (index % 3) + 2; // Duration between 2-4 seconds
-      const delay = (index * 0.1) % 2; // Delay between 0-2 seconds
-      
-      return {
-        id: i,
-        left: `${left}%`,
-        top: `${top}%`,
-        duration,
-        delay,
-      };
-    });
+  const handleMouse = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { clientX, clientY } = e;
+    const { height, width, left, top } = ref.current!.getBoundingClientRect();
+    const middleX = clientX - (left + width / 2);
+    const middleY = clientY - (top + height / 2);
+    x.set(middleX * 0.3);
+    y.set(middleY * 0.3);
   };
 
-  const particles = generateParticles();
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-950">
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950" />
-        {isClient && (
-          <div className="absolute inset-0">
-            {particles.map((particle) => (
-              <motion.div
-                key={particle.id}
-                className="absolute w-1 h-1 bg-blue-400 rounded-full"
-                style={{
-                  left: particle.left,
-                  top: particle.top,
-                }}
-                animate={{
-                  opacity: [0, 1, 0],
-                  scale: [0, 1, 0],
-                }}
-                transition={{
-                  duration: particle.duration,
-                  repeat: Infinity,
-                  delay: particle.delay,
-                }}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
-            <span className="text-gradient">Eagle$Win</span>
-            <br />
-            <span className="text-gray-100">Web Designer & Developer</span>
-          </h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl sm:text-2xl text-blue-400 mb-8 font-bold"
-          >
-            I Build High-Performance Websites That Drive Revenue
-          </motion.p>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-lg text-gray-400 mb-12 max-w-3xl mx-auto"
-          >
-            Specializing in Business Websites, E-Commerce, Landing Pages, Portfolios, Dashboard UI & Booking Websites
-          </motion.p>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="px-8 py-4 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors flex items-center gap-2 w-full sm:w-auto justify-center cursor-pointer shadow-lg shadow-blue-500/20"
-            >
-              Get Started Now
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const projectsSection = document.getElementById('projects');
-                if (projectsSection) {
-                  projectsSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="px-8 py-4 border-2 border-blue-500/30 text-white font-bold rounded-lg hover:bg-blue-500 hover:text-white transition-all flex items-center gap-2 w-full sm:w-auto justify-center cursor-pointer"
-            >
-              Explore My Work
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
-          </motion.div>
-
-          {/* Social Proof Bar */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="flex flex-wrap justify-center gap-6 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 border-t border-white/5 pt-12"
-          >
-            <div className="flex items-center gap-2">
-               <span className="text-blue-500">✓</span> 15+ Projects Delivered
-            </div>
-            <div className="flex items-center gap-2">
-               <span className="text-blue-500">✓</span> 100% Satisfaction Rate
-            </div>
-            <div className="flex items-center gap-2">
-               <span className="text-blue-500">✓</span> 5-Star Service
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center"
-        >
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-gray-400 rounded-full mt-2"
-          />
-        </motion.div>
-      </motion.div>
-    </section>
+    <motion.button
+      ref={ref}
+      onMouseMove={handleMouse}
+      onMouseLeave={reset}
+      onClick={onClick}
+      style={{ x: springX, y: springY }}
+      className={`relative overflow-hidden ${className}`}
+    >
+      {children}
+    </motion.button>
   );
 };
 
-export default Hero;
+export default function Hero() {
+  const [isClient, setIsClient] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    setIsClient(true);
+    
+    // Ambient cursor tracking for background glow
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+      const x = (e.clientX - left) / width;
+      const y = (e.clientY - top) / height;
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const glowX = useSpring(useTransform(mouseX, [0, 1], [-20, 120]), { stiffness: 50, damping: 20 });
+  const glowY = useSpring(useTransform(mouseY, [0, 1], [-20, 120]), { stiffness: 50, damping: 20 });
+
+  // Staggered text reveal variants
+  const containerVars = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVars = {
+    hidden: { y: 100, opacity: 0, rotateX: -40 },
+    show: { 
+      y: 0, 
+      opacity: 1, 
+      rotateX: 0,
+      transition: { type: "spring" as const, stiffness: 100, damping: 20, mass: 1 } 
+    },
+  };
+
+  return (
+    <section ref={containerRef} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Dynamic Cinematic Lighting */}
+      {isClient && (
+        <>
+          <motion.div
+            className="absolute w-[800px] h-[800px] rounded-full blur-[120px] opacity-20 pointer-events-none mix-blend-screen bg-[#00e5ff]"
+            style={{
+              left: useTransform(glowX, v => `${v}%`),
+              top: useTransform(glowY, v => `${v}%`),
+              transform: "translate(-50%, -50%)",
+            }}
+          />
+          {/* Subtle slow pulsing background orb */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-radial from-white/[0.03] to-transparent rounded-full blur-[100px] animate-pulse-glow" />
+        </>
+      )}
+
+      {/* Grid Overlay Texture */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" style={{ maskImage: 'radial-gradient(ellipse at center, black, transparent 80%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black, transparent 80%)' }} />
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 xl:px-12 flex flex-col items-center text-center">
+        
+        {/* Availability Badge */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-8"
+        >
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00e5ff] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00e5ff] shadow-[0_0_10px_#00e5ff]"></span>
+          </span>
+          <span className="text-sm font-semibold tracking-wider text-gray-300 uppercase">Available for New Projects</span>
+        </motion.div>
+
+        {/* Main Headline */}
+        <motion.div
+          variants={containerVars}
+          initial="hidden"
+          animate="show"
+          className="mb-8"
+        >
+          <h1 className="text-[12vw] sm:text-6xl md:text-8xl lg:text-[100px] font-black leading-[0.9] tracking-tighter" style={{ perspective: '1000px' }}>
+            <motion.div variants={itemVars} className="overflow-hidden pb-2">
+              <span className="block text-white">Elevating Brands</span>
+            </motion.div>
+            <motion.div variants={itemVars} className="overflow-hidden pb-4 flex justify-center items-center gap-4 flex-wrap">
+              <span className="block italic text-gray-500 font-light text-[8vw] sm:text-5xl md:text-7xl lg:text-[80px]">with</span>
+              <span className="block text-gradient-cyan">Digital Excellence.</span>
+            </motion.div>
+          </h1>
+        </motion.div>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto font-medium mb-12"
+        >
+          I am Srikanth, an award-winning independent developer crafting premium Web Experiences that drive revenue & conversion.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 1, delay: 1 }}
+           className="flex flex-col sm:flex-row items-center gap-6"
+        >
+          <MagneticButton 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group px-8 py-4 bg-white text-black font-bold rounded-full text-lg flex items-center gap-2 hover:bg-gray-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+          >
+            Start a Project
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </MagneticButton>
+
+          <MagneticButton 
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group px-8 py-4 glass-panel text-white font-bold rounded-full text-lg flex items-center gap-2 hover:bg-white/10 transition-colors"
+          >
+            Explore Work
+          </MagneticButton>
+        </motion.div>
+
+      </div>
+
+      {/* Social Proof Numbers - Absolute Floating */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="hidden lg:flex absolute bottom-12 left-12 flex-col gap-1"
+      >
+        <span className="text-4xl font-bold text-white">15<span className="text-[#00e5ff]">+</span></span>
+        <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">Global Clients</span>
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.7 }}
+        className="hidden lg:flex absolute bottom-12 right-12 flex-col gap-1 text-right"
+      >
+        <span className="text-4xl font-bold text-white">100<span className="text-[#00e5ff]">%</span></span>
+        <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">Success Rate</span>
+      </motion.div>
+
+    </section>
+  );
+}

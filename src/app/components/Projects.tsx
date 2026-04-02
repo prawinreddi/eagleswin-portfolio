@@ -62,98 +62,96 @@ const Projects = () => {
     },
   ];
 
-  const getBadgeColor = (badge: string) => {
-    return 'bg-blue-600';
-  };
-
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      
+      {/* Background glow for Projects section */}
+      <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-[#00e5ff]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 -left-1/4 w-[600px] h-[600px] bg-white/5 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-20 flex flex-col items-start"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="text-gradient">Featured Solutions</span>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="h-[1px] w-12 bg-[#00e5ff]" />
+            <span className="text-[#00e5ff] uppercase tracking-[0.3em] text-xs font-bold">Selected Works</span>
+          </div>
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black mb-6 tracking-tighter">
+            <span className="text-white">Engineering </span>
+            <span className="text-gradient-cyan italic">Success.</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto italic font-medium">
-            Strategic "Real-World" projects designed to drive results
-          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-blue-500 transition-all duration-300"
+              initial={{ opacity: 0, scale: 0.95, y: 50 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: index * 0.1, type: "spring", stiffness: 50 }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="group glass-panel rounded-3xl p-8 md:p-10 relative overflow-hidden flex flex-col justify-between"
             >
-              {/* Badge and Title */}
-              <div className="flex items-start justify-between mb-8">
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className={`px-3 py-1 ${getBadgeColor(project.badge)} text-white text-[10px] font-black uppercase tracking-widest rounded-full`}>
-                      {project.badge}
-                    </span>
+              {/* Subtle hover gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="px-4 py-1.5 bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded-full border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    {project.badge}
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-1 tracking-tight">
-                    {project.title}
-                  </h3>
-                  <p className="text-blue-400 font-bold text-xs uppercase tracking-widest">
-                    {project.subtitle}
-                  </p>
+                  <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors" />
+                </div>
+                
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">
+                  {project.title}
+                </h3>
+                <p className="text-[#00e5ff] font-medium text-sm md:text-base uppercase tracking-widest mb-10">
+                  {project.subtitle}
+                </p>
+              </div>
+
+              <div className="space-y-8 relative z-10">
+                <div className="flex gap-4">
+                  <div className="w-[1px] bg-gray-800" />
+                  <div>
+                    <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-3">
+                      The Challenge
+                    </h4>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {project.problem}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="w-[2px] bg-[#00e5ff] shadow-[0_0_10px_#00e5ff]" />
+                  <div>
+                    <h4 className="text-[10px] font-bold text-[#00e5ff] uppercase tracking-[0.2em] mb-3">
+                      The Solution
+                    </h4>
+                    <p className="text-gray-200 text-sm leading-relaxed">
+                      {project.solution}
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Case Study Content */}
-              <div className="space-y-6 mb-10">
-                <div>
-                  <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2 font-serif italic">
-                    The Problem
-                  </h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {project.problem}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2 font-serif italic">
-                    The Solution
-                  </h4>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    {project.solution}
-                  </p>
-                </div>
-              </div>
-
-              {/* View Live Demo Button */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                  <Link 
-                    href={project.link}
-                    className="flex-1 py-4 bg-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl hover:bg-gray-200 transition-all flex items-center justify-center gap-2"
-                  >
-                    Launch Live Demo
-                    <ExternalLink className="w-4 h-4" />
-                  </Link>
-                  <button
-                    onClick={() => {
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }}
-                    className="flex-1 py-4 bg-gray-800 text-gray-300 font-bold uppercase tracking-widest text-[11px] rounded-xl hover:bg-gray-700 transition-all flex items-center justify-center gap-2 border border-gray-700 hover:border-blue-500"
-                  >
-                    Discuss Success
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+              {/* Action Buttons */}
+              <div className="mt-12 flex flex-col xl:flex-row gap-4 relative z-10 w-full">
+                <Link 
+                  href={project.link}
+                  className="flex-1 py-4 bg-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl hover:bg-[#00e5ff] hover:shadow-[0_0_20px_#00e5ff] hover:text-black transition-all flex items-center justify-center gap-2"
+                >
+                  View Case Study
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </motion.div>
           ))}
