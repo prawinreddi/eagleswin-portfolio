@@ -7,7 +7,6 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import FloatingWhatsapp from './components/FloatingWhatsapp';
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <FAQ />
       <Contact />
       <Footer />
-      <FloatingWhatsapp />
     </div>
   );
 }
