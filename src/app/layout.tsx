@@ -12,7 +12,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Eagle$Win | High-Performance Web Development & Design",
   description: "I Build High-Performance Websites That Drive Revenue. Specializing in Business Websites, E-Commerce, Landing Pages, Dashboards & Booking Systems. 100% Satisfaction Guaranteed.",
-  keywords: "web designer India, next.js developer, freelance web developer, e-commerce developer, business website designer, landing page expert, Eagle$Win",
+  keywords: "web designer India, next.js developer, e-commerce developer, business website designer, landing page expert, Eagle$Win, Digital Studio",
   authors: [{ name: "Eagle$Win" }],
   openGraph: {
     title: "Eagle$Win | High-Performance Web Development",
