@@ -10,7 +10,7 @@ export default function Header() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 left-0 w-full z-[100] px-10 py-10 md:px-16 md:py-14 flex justify-between items-center mix-blend-difference pointer-events-none"
+      className="fixed top-0 left-0 w-full z-[100] pl-6 pr-10 pt-6 md:pl-10 md:pr-16 md:pt-10 flex justify-between items-center mix-blend-difference pointer-events-none"
     >
       <Link href="/" className="pointer-events-auto">
         <div className="relative group">
