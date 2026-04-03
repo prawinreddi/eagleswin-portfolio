@@ -1,146 +1,195 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowUpRight, ArrowRight, Globe, Link as LinkIcon, MessageCircle, Mail } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, ArrowRight, Globe, Link as LinkIcon, MessageCircle, Mail, Award, Calendar, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const PersonalBrand = () => {
+  const works = [
+    { title: 'Zenith Labs', desc: 'Luxury Skincare Identity', year: '2025', tag: 'Branding', img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'Nocturne', desc: 'Cinema Advertising Campaign', year: '2025', tag: 'Motion', img: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'Alpha X', desc: 'Automotive Digital Platform', year: '2024', tag: 'Digital', img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'Prime One', desc: 'Financial Tech Branding', year: '2024', tag: 'Identity', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'Elysée Hotel', desc: 'Hospitality Visual Direction', year: '2023', tag: 'Art Direction', img: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'Onyx Gallery', desc: 'Contemporary Art Platform', year: '2023', tag: 'Web', img: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&q=90&w=1400' },
+  ];
+
+  const experience = [
+    { role: 'Executive Creative Director', company: 'Global Agency Network', period: '2022 — Present', location: 'London, UK' },
+    { role: 'Creative Lead, EMEA', company: 'Saatchi & Saatchi', period: '2019 — 2022', location: 'Paris, FR' },
+    { role: 'Senior Art Director', company: 'Wieden+Kennedy', period: '2016 — 2019', location: 'Amsterdam, NL' },
+    { role: 'Art Director', company: 'Leo Burnett', period: '2013 — 2016', location: 'London, UK' },
+  ];
+
+  const awards = [
+    'Cannes Lions Gold 2025', 'D&AD Black Pencil 2024', 'One Show Best of Show 2024', 'Clio Award Grand Prix 2023',
+    'Webby Award Winner 2023', 'BIMA Award 2022', 'Fast Company Innovation 2022', 'Communication Arts 2021'
+  ];
+
+  const pressLogos = ['WIRED', 'EYE', 'DEZEEN', 'WALLPAPER*', 'MONOCLE', 'THE GUARDIAN'];
+
   return (
-    <div className="min-h-screen bg-[#FDFCF8] text-[#1A1A1A] font-serif selection:bg-black selection:text-white">
-      {/* Project Metadata Bar */}
-      <div className="bg-[#FDFCF8] border-b border-gray-100 relative z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
-          <div className="flex items-center gap-2"><span className="text-black">CLIENT:</span> ARTHUR STERLING</div>
-          <div className="flex items-center gap-2"><span className="text-black">INDUSTRY:</span> CREATIVE DIRECTION</div>
-          <div className="flex items-center gap-2"><span className="text-black">DELIVERABLES:</span> BRAND IDENTITY</div>
-          <div className="flex items-center gap-2 font-black transition-colors hover:text-black"><span className="text-black">RESULTS:</span> LVMH SHORTLISTED</div>
+    <div className="min-h-screen bg-[#FDFCF8] text-[#1A1A1A] selection:bg-black selection:text-white" style={{ fontFamily: "'Georgia', serif" }}>
+
+      {/* Meta Bar */}
+      <div className="bg-[#FDFCF8] border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400" style={{ fontFamily: 'sans-serif' }}>
+          <div><span className="text-black">CLIENT:</span> ARTHUR STERLING</div>
+          <div><span className="text-black">INDUSTRY:</span> CREATIVE DIRECTION</div>
+          <div><span className="text-black">DELIVERABLES:</span> BRAND IDENTITY</div>
+          <div><span className="text-black">RESULTS:</span> LVMH SHORTLISTED</div>
         </div>
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-[101] mix-blend-difference invert uppercase">
-        <div className="max-w-7xl mx-auto px-10 py-8 flex justify-between items-center text-white">
+      <nav className="fixed top-0 w-full z-[101] mix-blend-difference" style={{ fontFamily: 'sans-serif' }}>
+        <div className="max-w-7xl mx-auto px-10 py-7 flex justify-between items-center text-white">
           <div className="text-xl font-bold tracking-tighter italic">Arthur Sterling</div>
           <div className="hidden md:flex gap-12 text-xs font-bold uppercase tracking-[0.2em]">
-            <a href="#" className="hover:line-through transition-all">Projects</a>
-            <a href="#" className="hover:line-through transition-all">About</a>
-            <a href="#" className="hover:line-through transition-all">Studio</a>
+            <a href="#work" className="hover:line-through transition-all">Work</a>
+            <a href="#about" className="hover:line-through transition-all">About</a>
+            <a href="#press" className="hover:line-through transition-all">Press</a>
           </div>
-          <div className="flex gap-6 items-center">
-            <Link href="/" className="px-4 py-2 bg-white text-black text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all">
-              Portfolio
-            </Link>
-          </div>
+          <Link href="/" className="px-4 py-2 bg-white text-black text-[10px] font-bold uppercase tracking-widest hover:bg-gray-200 transition-all">Portfolio</Link>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col justify-center px-10 lg:px-24 py-32 overflow-hidden">
-        {/* Background Text Overlay */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-gray-100/50 -z-10 select-none whitespace-nowrap leading-none italic">
-          VISIONARY DIRECTOR
+      {/* Hero */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=90&w=2560"
+            alt="Arthur Sterling"
+            fill
+            className="object-cover grayscale"
+            priority
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-[#FDFCF8]/80" />
         </div>
 
-        <div className="max-w-5xl">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18vw] font-black text-black/5 -z-10 select-none whitespace-nowrap leading-none italic pointer-events-none">
+          VISIONARY
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-10 lg:px-24 py-40 w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="text-xs font-bold uppercase tracking-[0.4em] text-gray-400 mb-8 block">
-              Based in London / Global Reach
+            <span className="text-xs font-bold uppercase tracking-[0.5em] text-gray-400 mb-8 block" style={{ fontFamily: 'sans-serif' }}>
+              Creative Director · London / Global
             </span>
-            <h1 className="text-7xl md:text-9xl font-black italic tracking-tighter leading-[0.85] mb-12">
-                Crafting <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500">Masterpieces</span> <br />
-                for the Bold.
+            <h1 className="text-7xl md:text-9xl font-black italic tracking-tighter leading-[0.85] mb-10">
+              Crafting <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-400">Masterpieces</span> <br />
+              for the Bold.
             </h1>
+            <p className="text-gray-500 max-w-sm italic leading-relaxed mb-10" style={{ fontFamily: 'sans-serif' }}>
+              Award-winning creative executive with 13+ years crafting high-impact brand identities, campaigns, and digital experiences for global brands.
+            </p>
+            <div className="flex gap-4" style={{ fontFamily: 'sans-serif' }}>
+              <button className="px-10 py-5 bg-black text-white font-bold uppercase tracking-widest text-[11px] hover:bg-gray-800 transition-all flex items-center gap-3">
+                View Work <ArrowRight className="w-4 h-4" />
+              </button>
+              <button className="px-8 py-5 border-2 border-black font-bold uppercase tracking-widest text-[11px] hover:bg-black hover:text-white transition-all">
+                Get in Touch
+              </button>
+            </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col md:flex-row gap-12 items-start"
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
           >
-            <div className="w-full md:w-1/2">
-                <button className="group relative px-12 py-6 bg-black text-white font-bold uppercase tracking-widest text-[11px] hover:pr-16 transition-all overflow-hidden mb-8">
-                    <span className="relative z-10">Start Your Journey</span>
-                    <ArrowRight className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-0 group-hover:opacity-100 transition-all" />
-                </button>
-                <p className="text-gray-500 max-w-xs text-sm italic leading-relaxed">
-                  Award-winning creative executive specializing in high-end brand identity and cinematic experiences.
-                </p>
+            <div className="relative aspect-[3/4] overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=90&w=1200"
+                alt="Creative Direction"
+                fill
+                className="object-cover"
+                unoptimized
+              />
             </div>
-            <div className="w-full md:w-1/2 relative aspect-square bg-gray-100 overflow-hidden">
-                <Image 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1000" 
-                    alt="Arthur Sterling" 
-                    fill 
-                    className="object-cover grayscale"
-                    unoptimized
-                />
+            <div className="absolute -bottom-8 -left-8 bg-black text-white p-8">
+              <div className="text-4xl font-black mb-1">13+</div>
+              <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400" style={{ fontFamily: 'sans-serif' }}>Years Experience</div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Expertise Section */}
-      <section className="py-40 px-10 lg:px-24 bg-[#1A1A1A] text-white">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-start">
-          <div className="lg:w-1/3">
-            <h2 className="text-sm font-bold uppercase tracking-[0.5em] text-gray-500 mb-10">Areas of Expertise</h2>
-            <div className="space-y-6">
-                {[
-                  'Creative Strategy',
-                  'Brand Architecture',
-                  'Visual Storytelling',
-                  'Motion Experience'
-                ].map((skill, i) => (
-                  <div key={i} className="text-2xl font-black italic group flex items-center gap-4 cursor-pointer">
-                    <span className="text-gray-700 transition-colors group-hover:text-white">0{i+1}</span>
-                    <span className="border-b-2 border-transparent group-hover:border-white transition-all">{skill}</span>
-                  </div>
-                ))}
+      {/* Awards Ticker */}
+      <div className="bg-black text-white py-5 overflow-hidden" style={{ fontFamily: 'sans-serif' }}>
+        <motion.div
+          animate={{ x: [0, -2000] }}
+          transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+          className="flex gap-16 whitespace-nowrap"
+        >
+          {[...awards, ...awards].map((award, i) => (
+            <div key={i} className="flex items-center gap-6">
+              <Award className="w-4 h-4 text-yellow-400 flex-shrink-0" />
+              <span className="text-xs font-bold uppercase tracking-widest">{award}</span>
             </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Work Grid */}
+      <section id="work" className="py-32 px-10 lg:px-24 bg-[#1A1A1A] text-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-end mb-20 gap-4">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[0.5em] text-gray-500 mb-4 block" style={{ fontFamily: 'sans-serif' }}>Selected Works</span>
+              <h2 className="text-5xl font-black italic tracking-tight">Recent Projects</h2>
+            </div>
+            <button className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest" style={{ fontFamily: 'sans-serif' }}>
+              All Projects <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
-          <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Project placeholders with minimalist aesthetic */}
-            {[
-              { title: 'Zenith Labs', desc: 'Luxury Skincare Identity', img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=1000' },
-              { title: 'Nocturne', desc: 'Cinema Advertising', img: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=1000' },
-              { title: 'Alpha X', desc: 'Automotive Digital', img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1000' },
-              { title: 'Prime One', desc: 'Financial Tech Branding', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000' }
-            ].map((p, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {works.map((project, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
                 className="group relative cursor-pointer"
               >
-                <div className="aspect-[3/4] bg-[#2A2A2A] rounded-sm mb-6 overflow-hidden relative">
-                   <Image 
-                     src={p.img} 
-                     alt={p.title} 
-                     fill 
-                     className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-100"
-                     unoptimized
-                   />
-                   <div className="absolute inset-0 flex items-center justify-center p-12">
-                      <div className="text-4xl font-black italic text-white/10 uppercase select-none rotate-12 group-hover:rotate-0 transition-transform duration-700">
-                        {p.title}
-                      </div>
-                   </div>
-                </div>
-                <div className="flex justify-between items-end">
-                  <div>
-                    <h3 className="text-lg font-bold mb-1 italic">{p.title}</h3>
-                    <p className="text-gray-500 text-[10px] uppercase tracking-widest font-bold">{p.desc}</p>
+                <div className="relative aspect-[4/5] overflow-hidden bg-[#2A2A2A]">
+                  <Image
+                    src={project.img}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                    unoptimized
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-500" />
+                  <div className="absolute top-4 left-4" style={{ fontFamily: 'sans-serif' }}>
+                    <span className="text-[9px] font-black uppercase tracking-widest bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full border border-white/30">
+                      {project.tag}
+                    </span>
                   </div>
-                  <ArrowUpRight className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-400">
+                    <button className="w-full py-3 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-yellow-400 transition-colors" style={{ fontFamily: 'sans-serif' }}>
+                      View Case Study →
+                    </button>
+                  </div>
+                </div>
+                <div className="pt-6 pb-2 flex justify-between items-end">
+                  <div>
+                    <h3 className="text-xl font-black italic mb-1">{project.title}</h3>
+                    <p className="text-gray-500 text-[10px] uppercase tracking-widest font-bold" style={{ fontFamily: 'sans-serif' }}>{project.desc}</p>
+                  </div>
+                  <div style={{ fontFamily: 'sans-serif' }}>
+                    <span className="text-gray-600 text-xs font-bold">{project.year}</span>
+                    <ArrowUpRight className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors ml-2 inline" />
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -148,21 +197,101 @@ const PersonalBrand = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-20 px-10 lg:px-24 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-12">
-        <div className="text-xl font-black italic tracking-tighter">A.S</div>
-        <div className="flex gap-10 text-[10px] font-bold uppercase tracking-widest">
-          <a href="#" className="hover:underline">Instagram</a>
-          <a href="#" className="hover:underline">LinkedIn</a>
-          <a href="#" className="hover:underline">Twitter</a>
-        </div>
-        <div className="flex items-center gap-4 group cursor-pointer">
-          <Mail className="w-4 h-4" />
-          <span className="text-[10px] font-black uppercase tracking-widest border-b border-black">hello@arthursterling.com</span>
-        </div>
-         <div className="text-gray-400 text-[10px] uppercase font-bold italic tracking-widest">
-            © 2026 Build for Eagle$Win.
+      {/* About / Experience */}
+      <section id="about" className="py-32 px-10 lg:px-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-[0.5em] text-gray-400 mb-6 block" style={{ fontFamily: 'sans-serif' }}>About</span>
+            <h2 className="text-5xl md:text-6xl font-black italic tracking-tight mb-10 leading-tight">A Director<br />Who Delivers.</h2>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              I craft brand experiences that don't just look beautiful — they convert. With 13 years shaping visual languages for Fortune 500s and cultural institutions alike, I bring both strategic depth and creative excellence.
+            </p>
+            <p className="text-gray-600 leading-relaxed mb-10">
+              My approach begins by understanding the business problem. The creative solution follows. I'm equally comfortable in a strategy room as I am directing a film shoot.
+            </p>
+            <div className="grid grid-cols-3 gap-8 pt-10 border-t border-gray-200" style={{ fontFamily: 'sans-serif' }}>
+              {[{ n: '120+', l: 'Clients Served' }, { n: '45+', l: 'Awards Won' }, { n: '3', l: 'Continents' }].map((s, i) => (
+                <div key={i}>
+                  <div className="text-3xl font-black mb-1">{s.n}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{s.l}</div>
+                </div>
+              ))}
+            </div>
           </div>
+
+          <div style={{ fontFamily: 'sans-serif' }}>
+            <span className="text-xs font-bold uppercase tracking-[0.5em] text-gray-400 mb-8 block">Experience</span>
+            <div className="space-y-8">
+              {experience.map((exp, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex gap-6 group"
+                >
+                  <div className="flex flex-col items-center">
+                    <div className="w-3 h-3 rounded-full bg-black group-hover:bg-yellow-400 transition-colors mt-1 flex-shrink-0" />
+                    {i < experience.length - 1 && <div className="w-px flex-1 bg-gray-200 mt-2" />}
+                  </div>
+                  <div className="pb-8">
+                    <h3 className="font-bold text-lg mb-1">{exp.role}</h3>
+                    <div className="text-black font-black text-sm mb-2">{exp.company}</div>
+                    <div className="flex gap-4 text-gray-400 text-[11px] font-bold uppercase tracking-widest">
+                      <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{exp.period}</span>
+                      <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{exp.location}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Press Section */}
+      <section id="press" className="py-20 px-10 lg:px-24 bg-[#F6F4F0]" style={{ fontFamily: 'sans-serif' }}>
+        <div className="max-w-7xl mx-auto text-center">
+          <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-gray-400 mb-10 block">As seen in</span>
+          <div className="flex flex-wrap justify-center gap-12 opacity-40 grayscale hover:opacity-60 transition-opacity">
+            {pressLogos.map((logo, i) => (
+              <span key={i} className="text-2xl font-black tracking-tighter">{logo}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="py-32 px-10 lg:px-24 bg-black text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-6xl md:text-8xl font-black italic tracking-tight mb-10 leading-tight">
+              Have a project<br />in mind?
+            </h2>
+            <p className="text-gray-400 text-lg mb-12 max-w-xl mx-auto" style={{ fontFamily: 'sans-serif' }}>
+              I take on a select number of new client projects per year. If you have a challenging brief, let's talk.
+            </p>
+            <a href="mailto:hello@arthursterling.com" className="inline-flex items-center gap-3 text-2xl font-bold border-b-2 border-white hover:text-yellow-400 hover:border-yellow-400 transition-all pb-2">
+              <Mail className="w-6 h-6" /> hello@arthursterling.com
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-10 lg:px-24 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8" style={{ fontFamily: 'sans-serif' }}>
+        <div className="text-2xl font-black italic tracking-tighter">A.S.</div>
+        <div className="flex gap-10 text-[10px] font-bold uppercase tracking-widest">
+          <a href="#" className="hover:underline text-gray-500 hover:text-black transition-colors">Instagram</a>
+          <a href="#" className="hover:underline text-gray-500 hover:text-black transition-colors">LinkedIn</a>
+          <a href="#" className="hover:underline text-gray-500 hover:text-black transition-colors">Twitter</a>
+        </div>
+        <div className="text-gray-400 text-[10px] uppercase font-bold italic tracking-widest">© 2026 Eagle$Win Portfolio Demo</div>
       </footer>
     </div>
   );
