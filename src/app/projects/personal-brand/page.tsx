@@ -35,7 +35,7 @@ const PersonalBrand = () => {
       {/* Meta Bar */}
       <div className="bg-[#FDFCF8] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400" style={{ fontFamily: 'sans-serif' }}>
-          <div><span className="text-black">CLIENT:</span> ARTHUR STERLING</div>
+          <div><span className="text-black">CLIENT:</span> EAGLE$WIN</div>
           <div><span className="text-black">INDUSTRY:</span> CREATIVE DIRECTION</div>
           <div><span className="text-black">DELIVERABLES:</span> BRAND IDENTITY</div>
           <div><span className="text-black">RESULTS:</span> LVMH SHORTLISTED</div>
@@ -45,7 +45,7 @@ const PersonalBrand = () => {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-[101] mix-blend-difference" style={{ fontFamily: 'sans-serif' }}>
         <div className="max-w-7xl mx-auto px-10 py-7 flex justify-between items-center text-white">
-          <div className="text-xl font-bold tracking-tighter italic">Arthur Sterling</div>
+          <div className="text-xl font-bold tracking-tighter italic">Eagle$Win</div>
           <div className="hidden md:flex gap-12 text-xs font-bold uppercase tracking-[0.2em]">
             <a href="#work" className="hover:line-through transition-all">Work</a>
             <a href="#about" className="hover:line-through transition-all">About</a>
@@ -60,7 +60,7 @@ const PersonalBrand = () => {
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=90&w=2560"
-            alt="Arthur Sterling"
+            alt="Eagle$Win"
             fill
             className="object-cover grayscale"
             priority
@@ -285,7 +285,7 @@ const PersonalBrand = () => {
 
       {/* Footer */}
       <footer className="py-12 px-10 lg:px-24 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8" style={{ fontFamily: 'sans-serif' }}>
-        <div className="text-2xl font-black italic tracking-tighter">A.S.</div>
+        <div className="text-2xl font-black italic tracking-tighter">E.W.</div>
         <div className="flex gap-10 text-[10px] font-bold uppercase tracking-widest">
           <a href="#" className="hover:underline text-gray-500 hover:text-black transition-colors">Instagram</a>
           <a href="#" className="hover:underline text-gray-500 hover:text-black transition-colors">LinkedIn</a>
