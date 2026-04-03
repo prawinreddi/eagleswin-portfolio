@@ -155,7 +155,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.8 }}
           className="text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto font-medium mb-12"
         >
-          I am Eagle$Win, an award-winning independent developer crafting premium Web Experiences that drive revenue & conversion.
+          Eagle$Win is a top-tier Digital Studio crafting premium Web Experiences that drive revenue & conversion.
         </motion.p>
 
         {/* CTAs */}
