@@ -43,7 +43,7 @@ const Demos = () => {
             <div className="aspect-[16/9] w-full relative overflow-hidden">
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=100&w=1600&auto=format&fit=crop')" }}
+                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2000&auto=format&fit=crop')" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent" />
             </div>
@@ -91,8 +91,8 @@ const Demos = () => {
           >
             <div className="aspect-[16/9] w-full relative overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=100&w=1600&auto=format&fit=crop"
-                alt="SpiceHub Restaurant Interface"
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2000&auto=format&fit=crop"
+                alt="SpiceHub Restaurant"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent" />
@@ -140,8 +140,8 @@ const Demos = () => {
           >
             <div className="aspect-[16/9] w-full relative overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1576091160550-217359f49f4c?q=100&w=1600&auto=format&fit=crop"
-                alt="MedSync Medical Software"
+                src="https://images.unsplash.com/photo-1576091160550-217359f49f4c?q=80&w=2000&auto=format&fit=crop"
+                alt="MedSync Healthcare"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent" />
@@ -189,8 +189,8 @@ const Demos = () => {
           >
             <div className="aspect-[16/9] w-full relative overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=100&w=1600&auto=format&fit=crop"
-                alt="EstateSync Real Estate Portal"
+                src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2000&auto=format&fit=crop"
+                alt="EstateSync Real Estate"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent" />
@@ -238,8 +238,8 @@ const Demos = () => {
           >
             <div className="aspect-[16/9] w-full relative overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=100&w=1600&auto=format&fit=crop"
-                alt="CoachSync Coaching Platform"
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2000&auto=format&fit=crop"
+                alt="CoachSync Coaching"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent" />
@@ -287,8 +287,8 @@ const Demos = () => {
           >
             <div className="aspect-[16/9] w-full relative overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1551288049-bbda38a8f1ad?q=100&w=1600&auto=format&fit=crop"
-                alt="StockSync SaaS Dashboard"
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop"
+                alt="StockSync Business Dashboard"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent" />
