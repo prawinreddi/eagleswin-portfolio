@@ -24,15 +24,25 @@ const Contact = () => {
     'Booking Websites',
   ];
 
-  const budgetRanges = [
-    '₹2,000 - ₹5,000 (Basic)',
-    '₹6,000 - ₹10,000 (Standard)',
-    '₹15,000+ (Premium)',
-  ];
+  const budgetMap: Record<string, string[]> = {
+    'Business Websites': ['₹5,000 - ₹12,000 (Basic)', '₹15,000 - ₹30,000 (Standard)', '₹40,000+ (Premium)'],
+    'E-Commerce Websites': ['₹15,000 - ₹30,000 (Basic)', '₹35,000 - ₹60,000 (Standard)', '₹70,000+ (Premium)'],
+    'Landing Pages': ['₹2,000 - ₹5,000 (Basic)', '₹6,000 - ₹10,000 (Standard)', '₹15,000+ (Premium)'],
+    'Portfolio Websites': ['₹3,000 - ₹8,000 (Basic)', '₹10,000 - ₹20,000 (Standard)', '₹25,000+ (Premium)'],
+    'Dashboard UI': ['₹15,000 - ₹35,000 (Basic)', '₹40,000 - ₹70,000 (Standard)', '₹80,000+ (Premium)'],
+    'Booking Websites': ['₹10,000 - ₹20,000 (Basic)', '₹25,000 - ₹50,000 (Standard)', '₹60,000+ (Premium)'],
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData(prev => {
+      const newData = { ...prev, [name]: value };
+      // Reset budget if serviceType changes
+      if (name === 'serviceType') {
+        newData.budget = '';
+      }
+      return newData;
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -178,8 +188,10 @@ const Contact = () => {
                     required
                     className="w-full px-5 py-4 bg-[#050505] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#00e5ff]/40 focus:ring-4 focus:ring-[#00e5ff]/5 transition-all text-sm appearance-none"
                   >
-                    <option value="" className="bg-[#050505]">Select budget</option>
-                    {budgetRanges.map((budget) => (
+                    <option value="" className="bg-[#050505]">
+                      {formData.serviceType ? 'Select budget' : 'Select service first'}
+                    </option>
+                    {(formData.serviceType ? budgetMap[formData.serviceType] : []).map((budget: string) => (
                       <option key={budget} value={budget} className="bg-[#050505]">
                         {budget}
                       </option>
