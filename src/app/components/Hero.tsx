@@ -141,7 +141,7 @@ export default function Hero() {
             variants={itemVars}
             className="text-[#00e5ff] font-black uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-6 block"
           >
-            I'm <span className="text-white">prawinreddi</span> — Founder of Eagle$Win
+            Founder & Lead Developer — <span className="text-white">prawinreddi</span>
           </motion.p>
           
           <h1 className="text-[12vw] sm:text-6xl md:text-8xl lg:text-[100px] font-black leading-[0.9] tracking-tighter" style={{ perspective: '1000px' }}>
@@ -150,7 +150,7 @@ export default function Hero() {
             </motion.div>
             <motion.div variants={itemVars} className="overflow-hidden pb-4 flex justify-center items-center gap-4 flex-wrap">
               <span className="block italic text-gray-500 font-light text-[8vw] sm:text-5xl md:text-7xl lg:text-[80px]">High-Growth</span>
-              <span className="block text-gradient-cyan">Digital Assets.</span>
+              <span className="block text-gradient-cyan">Business Assets.</span>
             </motion.div>
           </h1>
         </motion.div>
@@ -160,9 +160,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto font-medium mb-12 leading-relaxed"
+          className="text-lg md:text-xl text-gray-400 max-w-4xl mx-auto font-medium mb-12 leading-relaxed"
         >
-          I am a <span className="text-white">Full-Stack Developer</span> crafting premium, high-conversion web experiences. I transform your vision into a high-performance asset that drives <span className="text-[#00e5ff]">real revenue & growth.</span>
+          నేను <span className="text-white">prawinreddi</span>. లోకల్ బిజినెస్లకు ప్రీమియం వెబ్ పోర్టల్స్ మరియు ఆటోమేషన్ సొల్యూషన్స్ అందిస్తాను. 
+          With <span className="text-white">99% Performance Scores</span> and trust from <span className="text-[#00e5ff]">50+ Global Clients</span>, I transform your vision into a revenue-driving machine.
         </motion.p>
 
         {/* CTAs */}
