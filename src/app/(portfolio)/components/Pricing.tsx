@@ -7,7 +7,7 @@ import { useState } from 'react';
 const commercePlans = [
   {
     name: 'Basic Store',
-    price: '₹15,000',
+    price: '₹10,000',
     features: [
       '5 Strategic Pages',
       'Mobile Responsive Design',
@@ -20,7 +20,7 @@ const commercePlans = [
   },
   {
     name: 'Standard Store',
-    price: '₹20,000',
+    price: '₹15,000',
     features: [
       '8 High-Conversion Pages',
       'Sanity CMS Admin Panel',
@@ -33,7 +33,7 @@ const commercePlans = [
   },
   {
     name: 'Premium Store',
-    price: '₹25,000+',
+    price: '₹20,000+',
     features: [
       'Unlimited High-End Pages',
       'Shiprocket API Integration',
