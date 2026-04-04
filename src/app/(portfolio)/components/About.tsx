@@ -1,115 +1,126 @@
-"use client";
+'use client';
 
 import { motion } from 'framer-motion';
-import { Award, Zap, Target, BarChart3, Code2, Globe2, ShieldCheck, Cpu } from 'lucide-react';
-
-const stats = [
-  { label: 'High-Ticket Projects', value: '50+', icon: Award },
-  { label: 'Domain Expertise', value: '12+', icon: Cpu },
-  { label: 'Client Satisfaction', value: '99%', icon: ShieldCheck },
-  { label: 'ROI Improvement', value: '45% Avg', icon: BarChart3 },
-];
+import { Mail, Code2, Terminal, Cpu, ExternalLink, Link as LinkIcon } from 'lucide-react';
 
 const About = () => {
+  const skills = [
+    {
+      category: 'Frontend',
+      icon: <Code2 className="w-5 h-5 text-[#00e5ff]" />,
+      items: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript'],
+    },
+    {
+      category: 'Backend',
+      icon: <Terminal className="w-5 h-5 text-[#00e5ff]" />,
+      items: ['Node.js', 'Express', 'Prisma', 'PostgreSQL', 'REST APIs'],
+    },
+    {
+      category: 'Core',
+      icon: <Cpu className="w-5 h-5 text-[#00e5ff]" />,
+      items: ['Performance SEO', 'UI/UX Design', 'Cloud Hosting', 'Git/GitHub'],
+    },
+  ];
+
+  const socialLinks = [
+    { icon: <LinkIcon className="w-5 h-5" />, label: 'GitHub', href: '#' },
+    { icon: <ExternalLink className="w-5 h-5" />, label: 'LinkedIn', href: '#' },
+    { icon: <Mail className="w-5 h-5" />, label: 'Email', href: 'mailto:contact@example.com' },
+  ];
+
   return (
     <section id="about" className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-[#050505]">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00e5ff]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          {/* Image/Visual Side */}
+          {/* Left Side: Photo Placeholder */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative group lg:pr-12"
           >
-            <div className="relative aspect-square w-full max-w-md mx-auto group">
-              {/* Animated borders */}
-              <div className="absolute inset-x-[-20px] inset-y-[-20px] border border-indigo-500/20 rounded-[4rem] group-hover:scale-105 transition-transform duration-700" />
-              <div className="absolute inset-x-[-10px] inset-y-[-10px] border border-indigo-500/40 rounded-[3.5rem] group-hover:rotate-3 transition-transform duration-700" />
-              
-              <div className="relative h-full w-full rounded-[3rem] overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" 
-                  alt="Elite Developer" 
-                  className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                
-                {/* Floating Badge */}
-                <div className="absolute bottom-8 left-8 right-8 p-6 glass-panel rounded-2xl border-white/10 backdrop-blur-xl">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center text-white">
-                      <Zap size={24} />
-                    </div>
-                    <div>
-                      <p className="text-white font-black uppercase tracking-widest text-xs">Innovation Partner</p>
-                      <p className="text-indigo-400 text-[10px] font-bold uppercase tracking-widest mt-1">ROI Focused Development</p>
-                    </div>
+            <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden glass-panel border border-white/10 group-hover:border-[#00e5ff]/30 transition-all duration-500 shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <span className="text-gray-500 font-black text-xl italic uppercase tracking-tighter group-hover:text-[#00e5ff]">Photo</span>
                   </div>
+                  <p className="text-gray-500 text-xs font-bold tracking-[0.3em] uppercase group-hover:text-white transition-colors">
+                    Your Image Here
+                  </p>
                 </div>
               </div>
+              
+              {/* Animated Corner Ornaments */}
+              <div className="absolute top-6 left-6 w-4 h-4 border-t-2 border-l-2 border-[#00e5ff] opacity-40" />
+              <div className="absolute bottom-6 right-6 w-4 h-4 border-b-2 border-r-2 border-[#00e5ff] opacity-40" />
             </div>
+
+            {/* Floating Decorative Elements */}
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#00e5ff]/10 rounded-full blur-3xl -z-10 animate-pulse" />
           </motion.div>
 
-          {/* Content Side */}
+          {/* Right Side: Content */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="space-y-10"
           >
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="h-[1px] w-12 bg-indigo-500" />
-                <span className="text-indigo-500 uppercase tracking-[0.3em] text-xs font-bold">The Visionary</span>
-              </div>
-              <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tighter leading-tight">
-                Not Just a Developer, <br /> 
-                <span className="text-gradient-indigo italic">A Growth Partner.</span>
-              </h2>
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-[1px] w-12 bg-[#00e5ff]" />
+              <span className="text-[#00e5ff] uppercase tracking-[0.3em] text-xs font-bold">About the Studio</span>
             </div>
+            
+            <h2 className="text-4xl sm:text-5xl font-black mb-8 tracking-tighter text-white leading-tight">
+              Bridging the gap between <span className="text-gradient-cyan italic">Art & Performance.</span>
+            </h2>
 
-            <p className="text-gray-400 text-lg leading-relaxed">
-              I specialize in transforming ambitious business ideas into high-performance digital experiences. 
-              My approach blends <span className="text-white font-bold">premium aesthetics</span> with 
-              <span className="text-white font-bold"> scalable architecture</span>, ensuring every project 
-              isn’t just beautiful, but generates measurable ROI. 
+            <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-xl">
+              I specialize in crafting high-conversion digital experiences that look premium and perform flawlessly. With a deep focus on Next.js and high-fidelity UI, I help ambitious brands dominate their digital space.
             </p>
 
-            <div className="grid grid-cols-2 gap-6">
-              {[
-                { title: 'Strategic Planning', icon: Target, desc: 'Every line of code serves a business goal.' },
-                { title: 'Global Standards', icon: Globe2, desc: 'Implementing cutting-edge tech like Next.js 14.' },
-                { title: 'Performance First', icon: Zap, desc: 'Blazing fast load times for higher conversions.' },
-                { title: 'Secure & Reliable', icon: ShieldCheck, desc: 'Enterprise-grade security in every build.' },
-              ].map((item, i) => (
-                <div key={i} className="space-y-2">
-                  <div className="flex items-center gap-2 text-indigo-500">
-                    <item.icon size={18} />
-                    <span className="font-black uppercase tracking-widest text-[10px]">{item.title}</span>
+            {/* Skills Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+              {skills.map((skill, index) => (
+                <div key={index} className="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#00e5ff]/20 transition-all duration-300 group/skill">
+                  <div className="mb-4 group-hover/skill:scale-110 transition-transform duration-300">
+                    {skill.icon}
                   </div>
-                  <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                  <h4 className="text-white font-bold text-xs uppercase tracking-widest mb-3">{skill.category}</h4>
+                  <ul className="space-y-1.5">
+                    {skill.items.map((item, i) => (
+                      <li key={i} className="text-gray-500 text-[10px] uppercase font-medium tracking-wider">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
 
-            <div className="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-8 border-t border-white/5">
-              {stats.map((stat, i) => (
-                <div key={i} className="text-center sm:text-left">
-                  <p className="text-3xl font-black text-white tracking-tighter mb-1">{stat.value}</p>
-                  <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{stat.label}</p>
-                </div>
-              ))}
+            {/* Social Links Bar */}
+            <div className="flex items-center gap-6">
+              <span className="text-gray-600 text-[10px] font-black uppercase tracking-[0.3em]">Connect:</span>
+              <div className="flex gap-4">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00e5ff] hover:border-[#00e5ff]/50 hover:bg-[#00e5ff]/5 transition-all duration-300"
+                    aria-label={social.label}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>
