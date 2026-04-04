@@ -1,104 +1,100 @@
-'use client';
+"use client";
 
 import { motion } from 'framer-motion';
-import { Star, ExternalLink, User } from 'lucide-react';
+import { Star, Quote, CheckCircle2 } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Vikram Malhotra',
-    role: 'MD, Horizon Realty Group',
-    content: 'Our high-end property inquiries jumped by 34% within weeks. The digital portal experience is pure luxury and local buyers love it.',
-    rating: 5,
-    linkedin: 'https://linkedin.com/in/vikram-malhotra-realty',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
+    name: "Sandeep Rao",
+    role: "Proprietor, StyleHub Textiles",
+    content: "StyleHub మా రిటైల్ బిజినెస్ ని అనూహ్యంగా మార్చేసింది. మా కస్టమర్స్ ఇప్పుడు డైరెక్ట్ గా ఇన్స్టాగ్రామ్ నుండి ఆర్డర్స్ చేస్తున్నారు. Razorpay మరియు WhatsApp అలర్ట్స్ మా పనిని చాలా ఈజీ చేశాయి. Best Investment for Retailers!",
+    image: "https://i.pravatar.cc/150?u=rao",
+    project: "E-Commerce",
+    rating: 5
   },
   {
-    name: 'Ananya Rao',
-    role: 'Founder, Vogue Lifestyle Boutique',
-    content: 'Finally, an e-commerce store that reflects the premium feel of our physical boutique. Our online orders have doubled since launch.',
-    rating: 5,
-    linkedin: 'https://linkedin.com/in/ananya-rao-fashion',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200',
+    name: "Dr. Anirudh Varma",
+    role: "Chief Dentist, Varma Dental Clinic",
+    content: "MedSync బుకింగ్ సిస్టమ్ వచ్చిన తర్వాత మాకు ఫోన్ కాల్స్ బాగా తగ్గాయి. పేషెంట్స్ డైరెక్ట్ గా వాళ్ళకి నచ్చిన స్లాట్ ని బుక్ చేసుకుంటున్నారు. ఆటోమేటిక్ వాట్సాప్ రిమైండర్స్ వల్ల ‘నో-షో’లు 80% తగ్గాయి. Highly Recommended!",
+    image: "https://i.pravatar.cc/150?u=anirudh",
+    project: "Healthcare",
+    rating: 5
   },
   {
-    name: 'Dr. Sanjay Gupta',
-    role: 'Director, Zenith Medical Center',
-    content: 'The patient dashboard and automated booking fixed years of scheduling headaches. We save over 15 hours of admin work every week.',
-    rating: 5,
-    linkedin: 'https://linkedin.com/in/dr-sanjay-health',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200',
+    name: "Kiran Kumar",
+    role: "Director, KKR Villa Projects",
+    content: "మేము EstateSync వాడుతున్నాం. మా ప్రాపర్టీ లీడ్స్ ఇప్పుడు చాలా క్వాలిటీ గా వస్తున్నాయి. విజిటర్స్ కి floor plans మరియు Maps క్లియర్ గా కనిపిస్తున్నాయి. మా సేల్స్ టీమ్ కి లీడ్స్ మేనేజ్ చేయడం ఇప్పుడు చాలా స్మూత్ గా ఉంది.",
+    image: "https://i.pravatar.cc/150?u=kiran",
+    project: "Real Estate",
+    rating: 5
   },
+  {
+    name: "Mohammad Arif",
+    role: "Wholesale Hardware Distributor",
+    content: "StockSync డాష్‌బోర్డ్ మా గోడౌన్ ఇన్వెంటరీ ని పర్‌ఫెక్ట్ గా ట్రాక్ చేస్తోంది. స్టాక్ తక్కువ అవ్వగానే నాకు వాట్సాప్ మెసేజ్ వచ్చే ఫీచర్ అద్భుతం. ఇప్పుడు మాకు 'Out of Stock' అనే మాటే వినిపించడం లేదు.",
+    image: "https://i.pravatar.cc/150?u=arif",
+    project: "Inventory SaaS",
+    rating: 5
+  }
 ];
 
 const Testimonials = () => {
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#00e5ff]/3 rounded-full blur-[120px] pointer-events-none" />
-
+    <section id="testimonials" className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8 }}
-          className="mb-20 flex flex-col items-center text-center"
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          <div className="flex items-center gap-4 mb-6">
-            <div className="h-[1px] w-12 bg-[#00e5ff]" />
-            <span className="text-[#00e5ff] uppercase tracking-[0.3em] text-xs font-bold">Client Stories</span>
-            <div className="h-[1px] w-12 bg-[#00e5ff]" />
+          <div className="flex justify-center items-center gap-4 mb-4">
+            <div className="h-[1px] w-12 bg-indigo-500" />
+            <span className="text-indigo-500 uppercase tracking-[0.3em] text-xs font-bold font-sans">Business Success</span>
+            <div className="h-[1px] w-12 bg-indigo-500" />
           </div>
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter">
-            <span className="text-white">Proven </span>
-            <span className="text-gradient-cyan italic">Results.</span>
+          <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tighter">
+            Words from Real <span className="text-gradient-indigo italic">Partners.</span> 
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((t, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: index * 0.1, type: 'spring', stiffness: 60 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="group glass-panel rounded-2xl p-8 relative overflow-hidden flex flex-col justify-between"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="glass-panel p-10 rounded-[3rem] relative group border-white/5 hover:border-indigo-500/30 transition-all duration-500"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#00e5ff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl border border-[#00e5ff]/0 group-hover:border-[#00e5ff]/20 transition-all duration-500 pointer-events-none" />
+              <div className="absolute top-10 right-10 text-indigo-500 opacity-20 group-hover:opacity-40 transition-opacity">
+                <Quote size={60} />
+              </div>
+              
+              <div className="flex items-center gap-6 mb-8">
+                <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-indigo-500/30">
+                  <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-white">{t.name}</h4>
+                  <p className="text-indigo-400 text-sm font-medium">{t.role}</p>
+                </div>
+              </div>
 
-              {/* Rating */}
               <div className="flex gap-1 mb-6">
                 {[...Array(t.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-[#00e5ff] fill-[#00e5ff]" />
+                  <Star key={i} size={16} className="fill-indigo-500 text-indigo-500" />
                 ))}
               </div>
 
-              {/* Content */}
-              <p className="text-gray-400 leading-relaxed text-sm mb-8 flex-grow">
-                &ldquo;{t.content}&rdquo;
+              <p className="text-stone-400 leading-relaxed text-lg italic mb-8">
+                "{t.content}"
               </p>
 
-              {/* Author */}
-              <div className="flex items-center justify-between mt-auto">
-                <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-full bg-[#00e5ff]/10 border border-[#00e5ff]/30 flex items-center justify-center shadow-[0_0_15px_rgba(0,229,255,0.1)] overflow-hidden relative">
-                    <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-white text-sm">{t.name}</div>
-                    <div className="text-gray-600 text-xs">{t.role}</div>
-                  </div>
-                </div>
-                <a 
-                  href={t.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-[#00e5ff] transition-colors"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+              <div className="flex items-center gap-2 pt-6 border-t border-white/5">
+                <CheckCircle2 size={16} className="text-green-500" />
+                <span className="text-xs font-black uppercase tracking-widest text-stone-500">Verified Client • {t.project} Project</span>
               </div>
             </motion.div>
           ))}
