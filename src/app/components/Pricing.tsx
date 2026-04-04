@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Check, Star } from 'lucide-react';
+import { Check, Star, ShoppingBag, Utensils } from 'lucide-react';
+import { useState } from 'react';
 
-const plans = [
+const commercePlans = [
   {
     name: 'Basic Store',
     price: '₹15,000',
@@ -45,7 +46,53 @@ const plans = [
   },
 ];
 
+const restoPlans = [
+  {
+    name: 'Basic Menu',
+    price: '₹8,000',
+    features: [
+      'Digital Menu + Cart',
+      'Razorpay Integration',
+      'WhatsApp Order Alerts',
+      'Mobile Responsive',
+      '1 Revision Round',
+      'Delivery: 5-7 Days',
+    ],
+    popular: false,
+  },
+  {
+    name: 'Standard System',
+    price: '₹12,000',
+    features: [
+      'Full Ordering System',
+      'Order Management Admin',
+      'Live Order Tracking',
+      'Coupon Codes Setup',
+      '3 Revision Rounds',
+      'Delivery: 10-14 Days',
+    ],
+    popular: true,
+  },
+  {
+    name: 'Premium Network',
+    price: '₹18,000+',
+    features: [
+      'Loyalty Points System',
+      'Multi-Branch Support',
+      'Advanced Analytics',
+      'Customer History List',
+      'Unlimited Revisions',
+      'Delivery: 15-20 Days',
+    ],
+    popular: false,
+  },
+];
+
 const Pricing = () => {
+  const [activeTab, setActiveTab] = useState<'commerce' | 'resto'>('commerce');
+
+  const currentPlans = activeTab === 'commerce' ? commercePlans : restoPlans;
+
   return (
     <section id="pricing" className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background glow */}
@@ -57,7 +104,7 @@ const Pricing = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="mb-20 flex flex-col items-center text-center"
+          className="mb-12 flex flex-col items-center text-center"
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="h-[1px] w-12 bg-[#00e5ff]" />
@@ -65,24 +112,51 @@ const Pricing = () => {
             <div className="h-[1px] w-12 bg-[#00e5ff]" />
           </div>
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter">
-            <span className="text-white">Pricing </span>
-            <span className="text-gradient-cyan italic">Plans.</span>
+            <span className="text-white">Strategic </span>
+            <span className="text-gradient-cyan italic">Pricing.</span>
           </h2>
           <p className="text-gray-500 text-lg mt-4 max-w-xl">
-            Transparent pricing models for businesses of all sizes
+            Choose the perfect solution for your business growth
           </p>
         </motion.div>
 
+        {/* Tab Switcher */}
+        <div className="flex justify-center mb-16">
+          <div className="p-1 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 flex gap-1">
+            <button
+              onClick={() => setActiveTab('commerce')}
+              className={`px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
+                activeTab === 'commerce' 
+                  ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
+                  : 'text-gray-500 hover:text-white'
+              }`}
+            >
+              <ShoppingBag className="w-4 h-4" />
+              E-Commerce
+            </button>
+            <button
+              onClick={() => setActiveTab('resto')}
+              className={`px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
+                activeTab === 'resto' 
+                  ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
+                  : 'text-gray-500 hover:text-white'
+              }`}
+            >
+              <Utensils className="w-4 h-4" />
+              Restaurant
+            </button>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {plans.map((plan, index) => (
+          {currentPlans.map((plan, index) => (
             <motion.div
-              key={index}
+              key={`${activeTab}-${index}`}
               initial={{ opacity: 0, scale: 0.9, y: 40 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1, type: 'spring', stiffness: 60 }}
               whileHover={{ y: -10 }}
-              className={`relative glass-panel rounded-3xl p-8 flex flex-col justify-between overflow-hidden ${
+              className={`relative glass-panel rounded-3xl p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 ${
                 plan.popular ? 'border-[#00e5ff]/40 shadow-[0_0_40px_rgba(0,229,255,0.1)]' : 'border-white/5'
               }`}
             >
