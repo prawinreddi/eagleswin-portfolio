@@ -141,7 +141,7 @@ export default function Hero() {
             variants={itemVars}
             className="text-[#00e5ff] font-black uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-6 block"
           >
-            Founder & Lead Developer — <span className="text-white">prawinreddi</span>
+            Founder & Lead Developer — <span className="text-white">Prawinreddi</span>
           </motion.p>
           
           <h1 className="text-[12vw] sm:text-6xl md:text-8xl lg:text-[100px] font-black leading-[0.9] tracking-tighter" style={{ perspective: '1000px' }}>
@@ -160,10 +160,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="text-lg md:text-xl text-gray-400 max-w-4xl mx-auto font-medium mb-12 leading-relaxed"
+          className="text-lg md:text-2xl text-gray-400 max-w-4xl mx-auto font-medium mb-12 leading-relaxed"
         >
-          నేను <span className="text-white">prawinreddi</span>. లోకల్ బిజినెస్లకు ప్రీమియం వెబ్ పోర్టల్స్ మరియు ఆటోమేషన్ సొల్యూషన్స్ అందిస్తాను. 
-          With <span className="text-white">99% Performance Scores</span> and trust from <span className="text-[#00e5ff]">50+ Global Clients</span>, I transform your vision into a revenue-driving machine.
+          Hi, I’m <span className="text-white">Prawinreddi</span><br />
+          I build <span className="text-white">scalable web applications</span> using <span className="text-[#00e5ff]">React & Next.js</span><br />
+          I’m a passionate developer focused on creating fast, responsive, and <span className="text-[#00e5ff]">user friendly</span> web experiences.
         </motion.p>
 
         {/* CTAs */}
@@ -191,27 +192,6 @@ export default function Hero() {
 
       </div>
 
-      {/* Social Proof Numbers - Absolute Floating */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="hidden lg:flex absolute bottom-12 left-12 flex-col gap-1"
-      >
-        <span className="text-4xl font-bold text-white">50<span className="text-[#00e5ff]">+</span></span>
-        <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">Global Clients</span>
-      </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.7 }}
-        className="hidden lg:flex absolute bottom-12 right-12 flex-col gap-1 text-right"
-      >
-        <span className="text-4xl font-bold text-white">99<span className="text-[#00e5ff]">%</span></span>
-        <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">Performance Score</span>
-      </motion.div>
-
-    </section>
+     </section>
   );
 }
