@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Check, Star, ShoppingBag, Utensils } from 'lucide-react';
+import { Check, Star, ShoppingBag, Utensils, Home, GraduationCap, Database } from 'lucide-react';
 import { useState } from 'react';
 
 const commercePlans = [
@@ -88,10 +88,134 @@ const restoPlans = [
   },
 ];
 
-const Pricing = () => {
-  const [activeTab, setActiveTab] = useState<'commerce' | 'resto'>('commerce');
+const estatePlans = [
+  {
+    name: 'Agent Landing',
+    price: '₹15,000',
+    features: [
+      'Property Listings Page',
+      'WhatsApp Lead Capture',
+      'Agent Profile Section',
+      'SEO Optimized Meta',
+      '1 Revision Round',
+      'Delivery: 7-9 Days',
+    ],
+    popular: false,
+  },
+  {
+    name: 'Property Portal',
+    price: '₹25,000',
+    features: [
+      'Advanced Search Filters',
+      'Admin Dashboard (CMS)',
+      'EMI Calculator Integration',
+      'Area Guides (Blog)',
+      '3 Revision Rounds',
+      'Delivery: 15-20 Days',
+    ],
+    popular: true,
+  },
+  {
+    name: 'Real Estate Hub',
+    price: '₹45,000+',
+    features: [
+      'Virtual Tour Setup',
+      'Google Maps API Integration',
+      'Customer CRM Panel',
+      'Automatic Ad Sync',
+      'Unlimited Revisions',
+      'Delivery: 25-30 Days',
+    ],
+    popular: false,
+  },
+];
 
-  const currentPlans = activeTab === 'commerce' ? commercePlans : restoPlans;
+const coachPlans = [
+  {
+    name: 'Batch Funnel',
+    price: '₹3,000',
+    features: [
+      'Single High-Conv Page',
+      'Urgency Countdowns',
+      'Results Section',
+      'Lead Capture Form',
+      'Delivery: 4 Days',
+    ],
+    popular: false,
+  },
+  {
+    name: 'Academy Hero',
+    price: '₹5,000',
+    features: [
+      'Multi-Batch Management',
+      'Faculty Profiles',
+      'Testimonial Grid',
+      'WhatsApp Notification',
+      'Delivery: 6-7 Days',
+    ],
+    popular: true,
+  },
+  {
+    name: 'Elite Growth',
+    price: '₹8,000',
+    features: [
+      'LMS Teaser Integration',
+      'Student Login Portal',
+      'Automated Reminders',
+      'Advanced Landing Suite',
+      'Delivery: 10-14 Days',
+    ],
+    popular: false,
+  },
+];
+
+const stockPlans = [
+  {
+    name: 'Basic Inventory',
+    price: '₹20,000',
+    features: [
+      'Item Management',
+      'Stock In/Out Tracking',
+      'Low Stock Alerts',
+      'Standard Reports',
+      'Delivery: 7-10 Days',
+    ],
+    popular: false,
+  },
+  {
+    name: 'SaaS Dashboard',
+    price: '₹30,000',
+    features: [
+      'Customer Debt Ledger',
+      'WhatsApp Auto-Alerts',
+      'PDF Invoice Export',
+      'Profit & Loss Analytics',
+      'Delivery: 15-20 Days',
+    ],
+    popular: true,
+  },
+  {
+    name: 'Enterprise ERP',
+    price: '₹40,000+',
+    features: [
+      'Barcode Scanning Port',
+      'Multi-User Roles',
+      'GST Billing Engine',
+      'AMC Support Package',
+      'Delivery: 25-35 Days',
+    ],
+    popular: false,
+  },
+];
+
+const Pricing = () => {
+  const [activeTab, setActiveTab] = useState<'commerce' | 'resto' | 'estate' | 'coach' | 'stock'>('commerce');
+
+  const currentPlans = 
+    activeTab === 'commerce' ? commercePlans : 
+    activeTab === 'resto' ? restoPlans :
+    activeTab === 'estate' ? estatePlans :
+    activeTab === 'coach' ? coachPlans : stockPlans;
 
   return (
     <section id="pricing" className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -122,10 +246,10 @@ const Pricing = () => {
 
         {/* Tab Switcher */}
         <div className="flex justify-center mb-16">
-          <div className="p-1 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 flex gap-1">
+          <div className="p-1 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 flex flex-wrap justify-center gap-1">
             <button
               onClick={() => setActiveTab('commerce')}
-              className={`px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
+              className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
                 activeTab === 'commerce' 
                   ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
                   : 'text-gray-500 hover:text-white'
@@ -136,7 +260,7 @@ const Pricing = () => {
             </button>
             <button
               onClick={() => setActiveTab('resto')}
-              className={`px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
+              className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
                 activeTab === 'resto' 
                   ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
                   : 'text-gray-500 hover:text-white'
@@ -144,6 +268,39 @@ const Pricing = () => {
             >
               <Utensils className="w-4 h-4" />
               Restaurant
+            </button>
+            <button
+              onClick={() => setActiveTab('estate')}
+              className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
+                activeTab === 'estate' 
+                  ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
+                  : 'text-gray-500 hover:text-white'
+              }`}
+            >
+              <Home className="w-4 h-4" />
+              Real Estate
+            </button>
+            <button
+              onClick={() => setActiveTab('coach')}
+              className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
+                activeTab === 'coach' 
+                  ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
+                  : 'text-gray-500 hover:text-white'
+              }`}
+            >
+              <GraduationCap className="w-4 h-4" />
+              Coaching
+            </button>
+            <button
+              onClick={() => setActiveTab('stock')}
+              className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
+                activeTab === 'stock' 
+                  ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
+                  : 'text-gray-500 hover:text-white'
+              }`}
+            >
+              <Database className="w-4 h-4" />
+              Inventory
             </button>
           </div>
         </div>
