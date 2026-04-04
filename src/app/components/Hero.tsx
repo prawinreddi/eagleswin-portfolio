@@ -197,7 +197,7 @@ export default function Hero() {
         transition={{ duration: 1, delay: 1.5 }}
         className="hidden lg:flex absolute bottom-12 left-12 flex-col gap-1"
       >
-        <span className="text-4xl font-bold text-white">15<span className="text-[#00e5ff]">+</span></span>
+        <span className="text-4xl font-bold text-white">50<span className="text-[#00e5ff]">+</span></span>
         <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">Global Clients</span>
       </motion.div>
 
@@ -207,8 +207,8 @@ export default function Hero() {
         transition={{ duration: 1, delay: 1.7 }}
         className="hidden lg:flex absolute bottom-12 right-12 flex-col gap-1 text-right"
       >
-        <span className="text-4xl font-bold text-white">100<span className="text-[#00e5ff]">%</span></span>
-        <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">Success Rate</span>
+        <span className="text-4xl font-bold text-white">99<span className="text-[#00e5ff]">%</span></span>
+        <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">Performance Score</span>
       </motion.div>
 
     </section>

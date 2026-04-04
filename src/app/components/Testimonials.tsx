@@ -1,29 +1,29 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import { Star, ExternalLink, User } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Rajesh Kumar',
-    role: 'Business Owner',
-    initial: 'R',
-    content: 'Our revenue increased by 30% within just 3 months of launching the new site. Eagle$Win truly understands business growth and ROI.',
+    name: 'Sarah Jenkins',
+    role: 'CTO, NexaLink AI',
+    content: 'Lighthouse scores hit 100/100 after the migration. A technical masterpiece that transformed our content pipeline speed.',
     rating: 5,
+    linkedin: 'https://linkedin.com/in/sarah-jenkins',
   },
   {
-    name: 'Priya Sharma',
-    role: 'Retail Entrepreneur',
-    initial: 'P',
-    content: 'A game-changer for our boutique. The e-commerce experience is so seamless that our online orders doubled in the first month!',
+    name: 'Marcus Thorne',
+    role: 'Founder, AeroPay FinTech',
+    content: 'Automated our entire merchant onboarding flow, saving us 20+ hours of manual work every week. The ROI was instant.',
     rating: 5,
+    linkedin: 'https://linkedin.com/in/marcus-thorne',
   },
   {
-    name: 'Arun Mehta',
-    role: 'Growth Consultant',
-    initial: 'A',
-    content: 'The custom dashboard UI has completely streamlined our operations. We\'ve reduced manual administrative work by over 70%!',
+    name: 'Dr. Elena Rossi',
+    role: 'Director, HealthCore',
+    content: 'The real-time patient dashboard has significantly improved our emergency response times. High-fidelity work under pressure.',
     rating: 5,
+    linkedin: 'https://linkedin.com/in/elena-rossi',
   },
 ];
 
@@ -78,14 +78,24 @@ const Testimonials = () => {
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-full bg-[#00e5ff]/10 border border-[#00e5ff]/30 flex items-center justify-center shadow-[0_0_15px_rgba(0,229,255,0.1)]">
-                  <span className="text-[#00e5ff] font-black text-sm">{t.initial}</span>
+              <div className="flex items-center justify-between mt-auto">
+                <div className="flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-full bg-[#00e5ff]/10 border border-[#00e5ff]/30 flex items-center justify-center shadow-[0_0_15px_rgba(0,229,255,0.1)] overflow-hidden">
+                    <User className="w-6 h-6 text-[#00e5ff]/50" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-white text-sm">{t.name}</div>
+                    <div className="text-gray-600 text-xs">{t.role}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-bold text-white text-sm">{t.name}</div>
-                  <div className="text-gray-600 text-xs">{t.role}</div>
-                </div>
+                <a 
+                  href={t.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-[#00e5ff] transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
             </motion.div>
           ))}
