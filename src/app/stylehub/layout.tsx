@@ -11,7 +11,7 @@ export default function StyleHubLayout({
 }) {
   return (
     <CartProvider>
-      <div className="min-h-screen bg-stone-50 text-stone-900 font-sans selection:bg-stone-900 selection:text-white flex flex-col">
+      <div className="min-h-screen bg-stone-50 text-stone-900 font-sans selection:bg-stone-900 selection:text-white flex flex-col [&_*]:cursor-auto cursor-auto">
         <AnnouncementBar />
         <Navbar />
         <SideCart />
