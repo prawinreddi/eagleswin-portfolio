@@ -137,12 +137,7 @@ export default function Hero() {
           animate="show"
           className="mb-8"
         >
-          <motion.p 
-            variants={itemVars}
-            className="text-[#00e5ff] font-black uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-6 block"
-          >
-            Founder & Lead Developer — <span className="text-white">Prawinreddi</span>
-          </motion.p>
+
           
           <h1 className="text-[12vw] sm:text-6xl md:text-8xl lg:text-[100px] font-black leading-[0.9] tracking-tighter" style={{ perspective: '1000px' }}>
             <motion.div variants={itemVars} className="overflow-hidden pb-2">
