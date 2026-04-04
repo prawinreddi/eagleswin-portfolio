@@ -36,7 +36,7 @@ export default function DoctorPage() {
             <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-200/50 border border-slate-50 border-b-8 border-b-teal-500">
               <div className="flex flex-col md:flex-row gap-10 items-start">
                 <div className="relative w-40 h-44 md:w-56 md:h-64 rounded-[2rem] overflow-hidden shadow-2xl shadow-teal-100 flex-shrink-0">
-                  <img src={doctor.image} alt={doctor.name} className="object-cover w-full h-full" />
+                  <img src={doctor.image} alt={doctor.name} className="object-cover object-top w-full h-full" />
                 </div>
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-4">

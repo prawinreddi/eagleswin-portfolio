@@ -52,13 +52,6 @@ export default function MedHome() {
                 Search
               </button>
             </div>
-
-            <div className="mt-10 flex flex-wrap gap-8 items-center justify-center lg:justify-start grayscale opacity-50">
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Trusted By</span>
-              <ActivityLogo />
-              <ActivityLogo />
-              <ActivityLogo />
-            </div>
           </motion.div>
         </div>
       </section>
@@ -111,7 +104,7 @@ export default function MedHome() {
                 className="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/60 border border-slate-50 group"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={doctor.image} alt={doctor.name} className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" />
+                  <img src={doctor.image} alt={doctor.name} className="object-cover object-top w-full h-full group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute top-6 left-6 flex gap-2">
                     <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1 text-[10px] font-black text-slate-800 shadow-sm">
                       <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" /> 4.9 (2k+)
@@ -156,7 +149,7 @@ export default function MedHome() {
         </div>
       </section>
 
-      {/* WHY CHOOSE SECTION (No-show reduction pitch) */}
+      {/* WHY CHOOSE SECTION */}
       <section className="py-24 bg-teal-600 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
@@ -184,15 +177,6 @@ export default function MedHome() {
           </div>
         </div>
       </section>
-    </div>
-  );
-}
-
-function ActivityLogo() {
-  return (
-    <div className="flex items-center gap-1.5">
-      <div className="w-5 h-5 bg-slate-400 rounded-md" />
-      <span className="text-sm font-black tracking-tight">HEALTHCARE</span>
     </div>
   );
 }

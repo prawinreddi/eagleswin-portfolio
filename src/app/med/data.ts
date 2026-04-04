@@ -49,7 +49,7 @@ export const doctors: Doctor[] = [
     fee: 300,
     rating: 4.8,
     reviews: 860,
-    image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1559839734-2b71f1536783?w=800&auto=format&fit=crop',
     about: 'Skilled in painless root canals, dental implants, and orthodontic treatments. Committed to providing a gentle experience for children and adults.',
     timings: '11:00 AM - 08:00 PM',
     category: 'dentist',
