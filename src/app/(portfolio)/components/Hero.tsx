@@ -155,39 +155,46 @@ export default function Hero() {
           </h1>
         </motion.div>
 
-        {/* Subtitle (Why/What) */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="text-lg md:text-xl text-gray-400 max-w-4xl mx-auto font-medium mb-12 leading-relaxed"
-        >
-          నేను <span className="text-white">prawinreddi</span>. లోకల్ బిజినెస్లకు ప్రీమియం వెబ్ పోర్టల్స్ మరియు ఆటోమేషన్ సొల్యూషన్స్ అందిస్తాను. 
-          With <span className="text-white">99% Performance Scores</span> and trust from <span className="text-[#00e5ff]">50+ Global Clients</span>, I transform your vision into a revenue-driving machine.
-        </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-7xl font-black text-white leading-tight tracking-tighter mb-8"
+            >
+              Full Stack Developer <br />
+              <span className="text-indigo-500">building scalable </span> <br /> 
+              web apps.
+            </motion.h1>
 
-        {/* CTAs */}
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 1, delay: 1 }}
-           className="flex flex-col sm:flex-row items-center gap-6"
-        >
-          <MagneticButton 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group px-8 py-4 bg-white text-black font-bold rounded-full text-lg flex items-center gap-2 hover:bg-gray-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)]"
-          >
-            Start a Project
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </MagneticButton>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-stone-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12 font-medium"
+            >
+              I help startups and businesses create fast, modern, and user-friendly digital products.
+            </motion.p>
 
-          <MagneticButton 
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group px-8 py-4 glass-panel text-white font-bold rounded-full text-lg flex items-center gap-2 hover:bg-white/10 transition-colors"
-          >
-            Explore Work
-          </MagneticButton>
-        </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            >
+              <button 
+                onClick={() => document.getElementById('demos')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-10 py-5 bg-indigo-600 text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all active:scale-95 flex items-center gap-2"
+              >
+                View Projects <ArrowRight className="w-4 h-4" />
+              </button>
+              
+              <button 
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-10 py-5 bg-white/5 border border-white/10 text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-white/10 transition-all flex items-center gap-2"
+              >
+                Contact Me
+              </button>
+            </motion.div>
 
       </div>
 
