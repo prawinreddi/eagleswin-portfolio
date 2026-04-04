@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import Header from "./components/Header";
-import CustomCursor from "./components/CustomCursor";
-import Navbar from "./components/Navbar";
+
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -37,10 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable} scroll-smooth`}>
       <body className="font-sans antialiased relative selection:bg-[#00e5ff]/30 selection:text-[#00e5ff]">
-        <Header />
-        <CustomCursor />
         {children}
-        <Navbar />
       </body>
     </html>
   );
