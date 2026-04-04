@@ -72,7 +72,7 @@ export default function MedHome() {
             {doctorCategories.map(cat => (
               <Link key={cat.id} href="#" className="flex flex-col items-center gap-4 p-8 rounded-3xl border border-slate-50 bg-slate-50/50 hover:bg-teal-500 hover:border-teal-500 hover:text-white transition-all group active:scale-95">
                 <span className="text-4xl group-hover:scale-125 transition-transform duration-300">{cat.emoji}</span>
-                <span className="text-center text-xs font-black uppercase tracking-wider">{cat.name}</span>
+                <span className="text-center text-xs font-black uppercase tracking-wider text-slate-800 group-hover:text-white">{cat.name}</span>
               </Link>
             ))}
           </div>
