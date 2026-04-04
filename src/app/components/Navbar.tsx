@@ -7,6 +7,7 @@ export default function Navbar() {
   const navItems = [
     { name: 'Home', sectionId: 'hero', icon: <Home className="w-5 h-5" /> },
     { name: 'Services', sectionId: 'services', icon: <Layers className="w-5 h-5" /> },
+    { name: 'Projects', sectionId: 'projects', icon: <Briefcase className="w-5 h-5" /> },
     { name: 'Contact', sectionId: 'contact', icon: <Phone className="w-5 h-5" /> },
   ];
 

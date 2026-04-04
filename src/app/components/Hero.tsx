@@ -171,7 +171,7 @@ export default function Hero() {
            initial={{ opacity: 0, y: 20 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 1, delay: 1 }}
-           className="flex flex-col sm:flex-row items-center justify-center gap-6"
+           className="flex flex-col sm:flex-row items-center gap-6"
         >
           <MagneticButton 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -179,6 +179,13 @@ export default function Hero() {
           >
             Start a Project
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </MagneticButton>
+
+          <MagneticButton 
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group px-8 py-4 glass-panel text-white font-bold rounded-full text-lg flex items-center gap-2 hover:bg-white/10 transition-colors"
+          >
+            Explore Work
           </MagneticButton>
         </motion.div>
 
