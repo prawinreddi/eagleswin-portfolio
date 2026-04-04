@@ -137,25 +137,32 @@ export default function Hero() {
           animate="show"
           className="mb-8"
         >
+          <motion.p 
+            variants={itemVars}
+            className="text-[#00e5ff] font-black uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-6 block"
+          >
+            I'm <span className="text-white">prawinreddi</span> — Founder of Eagle$Win
+          </motion.p>
+          
           <h1 className="text-[12vw] sm:text-6xl md:text-8xl lg:text-[100px] font-black leading-[0.9] tracking-tighter" style={{ perspective: '1000px' }}>
             <motion.div variants={itemVars} className="overflow-hidden pb-2">
-              <span className="block text-white">Elevating Brands</span>
+              <span className="block text-white">Engineering</span>
             </motion.div>
             <motion.div variants={itemVars} className="overflow-hidden pb-4 flex justify-center items-center gap-4 flex-wrap">
-              <span className="block italic text-gray-500 font-light text-[8vw] sm:text-5xl md:text-7xl lg:text-[80px]">with</span>
-              <span className="block text-gradient-cyan">Digital Excellence.</span>
+              <span className="block italic text-gray-500 font-light text-[8vw] sm:text-5xl md:text-7xl lg:text-[80px]">High-Growth</span>
+              <span className="block text-gradient-cyan">Digital Assets.</span>
             </motion.div>
           </h1>
         </motion.div>
 
-        {/* Subtitle */}
+        {/* Subtitle (Why/What) */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto font-medium mb-12"
+          className="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto font-medium mb-12 leading-relaxed"
         >
-          Eagle$Win is a top-tier Digital Studio crafting premium Web Experiences that drive revenue & conversion.
+          I am a <span className="text-white">Full-Stack Developer</span> crafting premium, high-conversion web experiences. I transform your vision into a high-performance asset that drives <span className="text-[#00e5ff]">real revenue & growth.</span>
         </motion.p>
 
         {/* CTAs */}
