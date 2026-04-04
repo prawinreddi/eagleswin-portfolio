@@ -178,6 +178,55 @@ const Demos = () => {
               </Link>
             </div>
           </motion.div>
+
+          {/* EstateSync Real Estate Demo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -10 }}
+            className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#111] shadow-2xl transition-all"
+          >
+            <div className="aspect-[16/9] w-full relative overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&auto=format&fit=crop"
+                alt="EstateSync Demo"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent" />
+            </div>
+
+            <div className="p-8">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">EstateSync</h3>
+                  <p className="text-amber-400 text-sm tracking-widest uppercase font-medium">Real Estate Solutions</p>
+                </div>
+                <Link href="/estate" className="p-3 bg-white/5 rounded-full hover:bg-amber-500 hover:text-black transition-colors text-white">
+                  <ExternalLink className="w-5 h-5" />
+                </Link>
+              </div>
+              
+              <p className="text-stone-400 mb-8 leading-relaxed">
+                A high-fidelity real estate portal with advanced search, virtual tours, and WhatsApp lead management. Designed for builders and consultants.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {['Next.js', 'Sanity CMS', 'Maps API', 'Lead Funnel'].map((tech) => (
+                  <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 text-stone-300 rounded-full text-xs font-medium">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <Link 
+                href="/estate"
+                className="inline-flex items-center gap-2 text-white font-bold group-hover:text-amber-400 transition-colors"
+              >
+                View Live Demo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
