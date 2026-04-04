@@ -22,11 +22,11 @@ const useCounter = (end: number, duration: number = 2000, start: boolean = false
   return count;
 };
 
-const SaaSPro = () => {
+const ZenithMedical = () => {
   const [showModal, setShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
-  const [activeTab, setActiveTab] = useState('analytics');
-  const [activePlan, setActivePlan] = useState('pro');
+  const [activeTab, setActiveTab] = useState('portal');
+  const [activePlan, setActivePlan] = useState('family');
   const [statsVisible, setStatsVisible] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
 
@@ -47,23 +47,23 @@ const SaaSPro = () => {
   };
 
   const featureTabs = {
-    analytics: {
-      title: 'Real-Time Analytics',
-      desc: 'Monitor every event as it happens with 5ms latency. Drill down into granular user behaviors with our AI-powered insight engine.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=90&w=1600',
-      points: ['Live event streaming', 'Custom dashboards', 'Predictive AI insights', 'Export to 30+ formats'],
+    portal: {
+      title: 'Digital Health Records',
+      desc: 'Access your full medical history, lab results, and prescriptions in one centralized, secure dashboard. Empowering you with data.',
+      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=90&w=1600',
+      points: ['Instant lab result access', 'Prescription renewal requests', 'Vaccination tracking', 'Secure physician messaging'],
     },
-    automation: {
-      title: 'Workflow Automation',
-      desc: 'Build powerful multi-step automations without writing a single line of code. Connect any tool in your stack through our visual builder.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=90&w=1600',
-      points: ['Drag & drop builder', '500+ pre-built templates', 'Conditional logic', 'Team collaboration'],
+    telehealth: {
+      title: 'Virtual Consultations',
+      desc: 'Connect with your specialists from the comfort of your home. High-definition video with integrated health monitoring tools.',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=90&w=1600',
+      points: ['Secure HD video calls', 'Real-time vital sharing', 'Screen sharing for docs', 'Digital session notes'],
     },
     security: {
-      title: 'Enterprise Security',
-      desc: 'Bank-grade encryption, SSO/SAML support, and SOC2 Type II certification. Your data is protected at every layer.',
+      title: 'HIPAA Compliant Privacy',
+      desc: 'Military-grade encryption for all patient data. We prioritize your privacy above all else with advanced security protocols.',
       image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=90&w=1600',
-      points: ['AES-256 encryption', 'SOC2 Type II certified', 'GDPR compliant', 'Audit logs & RBAC'],
+      points: ['End-to-end encryption', 'Multi-factor authentication', 'Regular security audits', 'Privacy-first data storage'],
     },
   };
 
@@ -75,23 +75,23 @@ const SaaSPro = () => {
 
   const testimonials = [
     {
-      quote: 'NexFlow reduced our deployment time from 2 weeks to 4 hours. This is the future of enterprise automation.',
-      name: 'Marcus Chen',
-      role: 'VP Engineering, CloudCore',
+      quote: 'The patient portal has completely changed how I manage my chronic condition. Everything I need is right there.',
+      name: 'Michael Sanghavi',
+      role: 'Patient for 5+ years',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
       rating: 5,
     },
     {
-      quote: 'We\'ve tried 6 automation platforms. NexFlow is the only one that actually scales with us.',
-      name: 'Alexandra Rivera',
-      role: 'CTO, Zenith AI',
+      quote: 'Telehealth sessions mean I can see my specialist without the 2-hour commute. The video quality is amazing.',
+      name: 'Jessica Lee',
+      role: 'Remote Patient',
       image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200',
       rating: 5,
     },
     {
-      quote: 'The analytics depth is unmatched. We uncovered $800k in untapped revenue in the first month.',
-      name: 'David Osei',
-      role: 'Head of Growth, Optimal Inc.',
+      quote: 'As a doctor, the Zenith dashboard allows me to focus on patients rather than paperwork. Highly recommended for clinicians.',
+      name: 'Dr. David Miller',
+      role: 'Senior Cardiologist',
       image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200',
       rating: 5,
     },
@@ -105,10 +105,10 @@ const SaaSPro = () => {
       {/* Meta Bar */}
       <div className="bg-[#0A0A0A] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
-          <div><span className="text-blue-500">CLIENT:</span> FAST-GROWTH B2B SAAS</div>
-          <div><span className="text-blue-500">INDUSTRY:</span> ENTERPRISE AUTOMATION</div>
-          <div><span className="text-blue-500">DELIVERABLES:</span> CLOUD NATIVE PLATFORM</div>
-          <div><span className="text-blue-500">RESULTS:</span> 40% REDUCTION IN OPS COST</div>
+          <div><span className="text-blue-500">CLIENT:</span> ZENITH MEDICAL CENTER</div>
+          <div><span className="text-blue-500">INDUSTRY:</span> LOCAL HEALTHCARE</div>
+          <div><span className="text-blue-500">DELIVERABLES:</span> PATIENT CARE PORTAL</div>
+          <div><span className="text-blue-500">RESULTS:</span> 15+ HOURS SAVED PER WEEK</div>
         </div>
       </div>
 
@@ -117,9 +117,9 @@ const SaaSPro = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2 font-black uppercase tracking-tighter">
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Zap className="w-5 h-5 text-white fill-white" />
+              <Shield className="w-5 h-5 text-white fill-white" />
             </div>
-            <span className="text-xl">NexFlow</span>
+            <span className="text-xl">Zenith Medical</span>
           </div>
           <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">
             <a href="#features" className="hover:text-white transition-colors">Product</a>
@@ -167,8 +167,8 @@ const SaaSPro = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-6xl md:text-8xl font-black tracking-tight mb-8 leading-[1.02]"
             >
-              Ship <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 italic">10x faster</span><br />
-              with Modern Intelligence.
+              Modern Care <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 italic">for the Local</span><br />
+              Community.
             </motion.h1>
 
             <motion.p
@@ -177,8 +177,7 @@ const SaaSPro = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
             >
-              The world's most powerful automation platform for high-growth teams.
-              Connect, automate, and scale — from startup to Fortune 500.
+              Experience world-class healthcare with Zenith Medical. Our patient-first portal brings your doctors, prescriptions, and results into one secure digital hub.
             </motion.p>
 
             <motion.div
@@ -218,7 +217,7 @@ const SaaSPro = () => {
                   <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
                   <div className="w-3 h-3 rounded-full bg-green-500/70" />
                   <div className="flex-1 mx-4 h-6 bg-white/5 rounded-md flex items-center px-3">
-                    <span className="text-[10px] text-gray-600">app.nexflow.io/dashboard</span>
+                    <span className="text-[10px] text-gray-600">portal.zenithmedical.org/my-health</span>
                   </div>
                 </div>
                 {/* Dashboard Content */}
@@ -235,10 +234,10 @@ const SaaSPro = () => {
                   <div className="flex-1 flex flex-col gap-4">
                     <div className="grid grid-cols-4 gap-3">
                       {[
-                        { label: 'Events Today', value: '284k', change: '+12.4%', up: true },
-                        { label: 'Active Flows', value: '1,204', change: '+8.1%', up: true },
-                        { label: 'Avg Latency', value: '4.8ms', change: '-2.3ms', up: true },
-                        { label: 'Error Rate', value: '0.01%', change: '-0.02%', up: true },
+                        { label: 'Patient Visits', value: '1,280', change: '+12.4%', up: true },
+                        { label: 'Avg Wait Time', value: '8.5 min', change: '-2.3 min', up: true },
+                        { label: 'Docs Active', value: '42', change: 'Online Now', up: true },
+                        { label: 'Success Rate', value: '99.8%', change: 'Post-Op', up: true },
                       ].map((card, i) => (
                         <div key={i} className="bg-white/5 rounded-xl p-4 border border-white/5">
                           <div className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-2">{card.label}</div>
@@ -290,10 +289,10 @@ const SaaSPro = () => {
         <section ref={statsRef} className="py-20 border-y border-white/5">
           <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
-              { value: `${users.toLocaleString()}+`, label: 'Teams worldwide' },
-              { value: `${(uptime / 1000).toFixed(2)}%`, label: 'Uptime SLA' },
-              { value: `${integrations}+`, label: 'Integrations' },
-              { value: `${speed}ms`, label: 'Avg latency' },
+              { value: `${users.toLocaleString()}+`, label: 'Patients Treated' },
+              { value: `${(uptime / 1000).toFixed(2)}%`, label: 'Patient Satisfaction' },
+              { value: `${integrations}+`, label: 'Specialist Doctors' },
+              { value: `${speed}%`, label: 'On-Time Appointments' },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -531,4 +530,4 @@ const SaaSPro = () => {
   );
 };
 
-export default SaaSPro;
+export default ZenithMedical;

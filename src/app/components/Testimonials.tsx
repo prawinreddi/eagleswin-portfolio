@@ -5,25 +5,28 @@ import { Star, ExternalLink, User } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Sarah Jenkins',
-    role: 'CTO, NexaLink AI',
-    content: 'Lighthouse scores hit 100/100 after the migration. A technical masterpiece that transformed our content pipeline speed.',
+    name: 'Vikram Malhotra',
+    role: 'MD, Horizon Realty Group',
+    content: 'Our high-end property inquiries jumped by 34% within weeks. The digital portal experience is pure luxury and local buyers love it.',
     rating: 5,
-    linkedin: 'https://linkedin.com/in/sarah-jenkins',
+    linkedin: 'https://linkedin.com/in/vikram-malhotra-realty',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
   },
   {
-    name: 'Marcus Thorne',
-    role: 'Founder, AeroPay FinTech',
-    content: 'Automated our entire merchant onboarding flow, saving us 20+ hours of manual work every week. The ROI was instant.',
+    name: 'Ananya Rao',
+    role: 'Founder, Vogue Lifestyle Boutique',
+    content: 'Finally, an e-commerce store that reflects the premium feel of our physical boutique. Our online orders have doubled since launch.',
     rating: 5,
-    linkedin: 'https://linkedin.com/in/marcus-thorne',
+    linkedin: 'https://linkedin.com/in/ananya-rao-fashion',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200',
   },
   {
-    name: 'Dr. Elena Rossi',
-    role: 'Director, HealthCore',
-    content: 'The real-time patient dashboard has significantly improved our emergency response times. High-fidelity work under pressure.',
+    name: 'Dr. Sanjay Gupta',
+    role: 'Director, Zenith Medical Center',
+    content: 'The patient dashboard and automated booking fixed years of scheduling headaches. We save over 15 hours of admin work every week.',
     rating: 5,
-    linkedin: 'https://linkedin.com/in/elena-rossi',
+    linkedin: 'https://linkedin.com/in/dr-sanjay-health',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200',
   },
 ];
 
@@ -80,8 +83,8 @@ const Testimonials = () => {
               {/* Author */}
               <div className="flex items-center justify-between mt-auto">
                 <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-full bg-[#00e5ff]/10 border border-[#00e5ff]/30 flex items-center justify-center shadow-[0_0_15px_rgba(0,229,255,0.1)] overflow-hidden">
-                    <User className="w-6 h-6 text-[#00e5ff]/50" />
+                  <div className="w-11 h-11 rounded-full bg-[#00e5ff]/10 border border-[#00e5ff]/30 flex items-center justify-center shadow-[0_0_15px_rgba(0,229,255,0.1)] overflow-hidden relative">
+                    <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <div className="font-bold text-white text-sm">{t.name}</div>

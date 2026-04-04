@@ -59,10 +59,10 @@ const TrendyBoutique = () => {
       {/* Meta Bar */}
       <div className="bg-white border-b border-gray-100 hidden md:block">
         <div className="max-w-7xl mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
-          <div><span className="text-black">CLIENT:</span> VOGUE BOUTIQUE</div>
-          <div><span className="text-black">INDUSTRY:</span> E-COMMERCE LUXURY</div>
-          <div><span className="text-black">DELIVERABLES:</span> HEADLESS STOREFRONT</div>
-          <div><span className="text-black">RESULTS:</span> 22% CONVERSION LIFT</div>
+          <div><span className="text-black">CLIENT:</span> VOGUE LIFESTYLE BOUTIQUE</div>
+          <div><span className="text-black">INDUSTRY:</span> LOCAL RETAIL & FASHION</div>
+          <div><span className="text-black">DELIVERABLES:</span> E-COMMERCE HUB</div>
+          <div><span className="text-black">RESULTS:</span> 2X ONLINE SALES GROWTH</div>
         </div>
       </div>
 
@@ -70,7 +70,7 @@ const TrendyBoutique = () => {
       <nav className="fixed top-0 w-full z-[101] bg-white/80 backdrop-blur-xl border-b border-gray-100" style={{ top: '36px' }}>
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
           <div className="flex items-center gap-12">
-            <div className="text-3xl font-black tracking-tighter uppercase">VOGUE</div>
+            <div className="text-3xl font-black tracking-tighter uppercase">VOGUE<span className="text-gray-300">LIFESTYLE</span></div>
             <div className="hidden lg:flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em]">
               {categories.map(cat => (
                 <button key={cat} onClick={() => setSelectedCategory(cat)} className={`transition-colors ${selectedCategory === cat ? 'text-black' : 'text-gray-400 hover:text-black'}`}>
@@ -112,7 +112,7 @@ const TrendyBoutique = () => {
               <span className="text-gray-300">ELEGANCE.</span>
             </h1>
             <p className="text-gray-500 max-w-xs mb-10 leading-relaxed font-medium">
-              Curated luxury pieces designed for the modern individual who values quality over quantity.
+              Curated luxury pieces for our local community. Experience the personalized touch of our boutique, now available at your fingertips.
             </p>
             <div className="flex gap-4">
               <button className="px-10 py-5 bg-black text-white font-bold uppercase tracking-widest text-[12px] hover:bg-gray-800 transition-all flex items-center gap-3">
@@ -384,7 +384,7 @@ const TrendyBoutique = () => {
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 text-gray-600 text-[10px] uppercase tracking-widest text-center font-bold">
-          © 2026 Vogue Boutique — Built for Eagle$Win Portfolio Demo
+          © 2026 Vogue Lifestyle Boutique — Built for Eagle$Win Portfolio Demo
         </div>
       </footer>
     </div>

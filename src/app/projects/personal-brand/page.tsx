@@ -5,21 +5,21 @@ import { ArrowUpRight, ArrowRight, Globe, Link as LinkIcon, MessageCircle, Mail,
 import Link from 'next/link';
 import Image from 'next/image';
 
-const PersonalBrand = () => {
+const SterlingBrand = () => {
   const works = [
-    { title: 'Zenith Labs', desc: 'Luxury Skincare Identity', year: '2025', tag: 'Branding', img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=90&w=1400' },
-    { title: 'Nocturne', desc: 'Cinema Advertising Campaign', year: '2025', tag: 'Motion', img: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=90&w=1400' },
-    { title: 'Alpha X', desc: 'Automotive Digital Platform', year: '2024', tag: 'Digital', img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=90&w=1400' },
-    { title: 'Prime One', desc: 'Financial Tech Branding', year: '2024', tag: 'Identity', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=90&w=1400' },
-    { title: 'Elysée Hotel', desc: 'Hospitality Visual Direction', year: '2023', tag: 'Art Direction', img: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=90&w=1400' },
-    { title: 'Onyx Gallery', desc: 'Contemporary Art Platform', year: '2023', tag: 'Web', img: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'Heritage Law', desc: 'Elite Legal Firm Identity', year: '2025', tag: 'Identity', img: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'Prime Dental', desc: 'Patient Experience Design', year: '2025', tag: 'UX/UI', img: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'Oak Realtors', desc: 'Market Dominance Campaign', year: '2024', tag: 'Marketing', img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'Wellness Hub', desc: 'Personal Brand Architecture', year: '2024', tag: 'Strategy', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'Apex Finance', desc: 'Boutique Wealth Identity', year: '2023', tag: 'Branding', img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=90&w=1400' },
+    { title: 'City Clinic', desc: 'Healthcare Digital Platform', year: '2023', tag: 'Digital', img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=90&w=1400' },
   ];
 
   const experience = [
-    { role: 'Executive Creative Director', company: 'Global Agency Network', period: '2022 — Present', location: 'London, UK' },
-    { role: 'Creative Lead, EMEA', company: 'Saatchi & Saatchi', period: '2019 — 2022', location: 'Paris, FR' },
-    { role: 'Senior Art Director', company: 'Wieden+Kennedy', period: '2016 — 2019', location: 'Amsterdam, NL' },
-    { role: 'Art Director', company: 'Leo Burnett', period: '2013 — 2016', location: 'London, UK' },
+    { role: 'Founder & Creative Director', company: 'Eagle$Win Studio', period: '2023 — Present', location: 'Regional / Virtual' },
+    { role: 'Senior Brand Strategist', company: 'Metro Growth Agency', period: '2020 — 2023', location: 'City Tech Hub' },
+    { role: 'Lead Visual Designer', company: 'Boutique Creative Firm', period: '2017 — 2020', location: 'Regional HQ' },
+    { role: 'Junior Brand Designer', company: 'Global Identity Corp', period: '2015 — 2017', location: 'Remote' },
   ];
 
   const awards = [
@@ -35,17 +35,17 @@ const PersonalBrand = () => {
       {/* Meta Bar */}
       <div className="bg-[#FDFCF8] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400" style={{ fontFamily: 'sans-serif' }}>
-          <div><span className="text-black">CLIENT:</span> EAGLE$WIN</div>
-          <div><span className="text-black">INDUSTRY:</span> CREATIVE DIRECTION</div>
-          <div><span className="text-black">DELIVERABLES:</span> BRAND IDENTITY</div>
-          <div><span className="text-black">RESULTS:</span> LVMH SHORTLISTED</div>
+          <div><span className="text-black">CLIENT:</span> LOCAL PROFESSIONALS</div>
+          <div><span className="text-black">INDUSTRY:</span> EXECUTIVE BRANDING</div>
+          <div><span className="text-black">DELIVERABLES:</span> AUTHORITY ARCHITECTURE</div>
+          <div><span className="text-black">RESULTS:</span> 3x LEAD QUALITY GROWTH</div>
         </div>
       </div>
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-[101] mix-blend-difference" style={{ fontFamily: 'sans-serif' }}>
         <div className="max-w-7xl mx-auto px-10 py-7 flex justify-between items-center text-white">
-          <div className="text-xl font-bold tracking-tighter italic">Eagle$Win</div>
+          <div className="text-xl font-bold tracking-tighter italic">Sterling Brand</div>
           <div className="hidden md:flex gap-12 text-xs font-bold uppercase tracking-[0.2em]">
             <a href="#work" className="hover:line-through transition-all">Work</a>
             <a href="#about" className="hover:line-through transition-all">About</a>
@@ -59,8 +59,8 @@ const PersonalBrand = () => {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=90&w=2560"
-            alt="Eagle$Win"
+            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=90&w=2560"
+            alt="prawinreddi"
             fill
             className="object-cover grayscale"
             priority
@@ -70,7 +70,7 @@ const PersonalBrand = () => {
         </div>
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18vw] font-black text-black/5 -z-10 select-none whitespace-nowrap leading-none italic pointer-events-none">
-          VISIONARY
+          AUTHORITY
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-10 lg:px-24 py-40 w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -80,7 +80,7 @@ const PersonalBrand = () => {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-xs font-bold uppercase tracking-[0.5em] text-gray-400 mb-8 block" style={{ fontFamily: 'sans-serif' }}>
-              Creative Director · London / Global
+              Creative Director · Regional / Global
             </span>
             <h1 className="text-7xl md:text-9xl font-black italic tracking-tighter leading-[0.85] mb-10">
               Crafting <br />
@@ -276,8 +276,8 @@ const PersonalBrand = () => {
             <p className="text-gray-400 text-lg mb-12 max-w-xl mx-auto" style={{ fontFamily: 'sans-serif' }}>
               I take on a select number of new client projects per year. If you have a challenging brief, let's talk.
             </p>
-            <a href="mailto:hello@arthursterling.com" className="inline-flex items-center gap-3 text-2xl font-bold border-b-2 border-white hover:text-yellow-400 hover:border-yellow-400 transition-all pb-2">
-              <Mail className="w-6 h-6" /> hello@arthursterling.com
+            <a href="mailto:hello@eagleswin.studio" className="inline-flex items-center gap-3 text-2xl font-bold border-b-2 border-white hover:text-yellow-400 hover:border-yellow-400 transition-all pb-2">
+              <Mail className="w-6 h-6" /> hello@eagleswin.studio
             </a>
           </motion.div>
         </div>
@@ -297,4 +297,4 @@ const PersonalBrand = () => {
   );
 };
 
-export default PersonalBrand;
+export default SterlingBrand;

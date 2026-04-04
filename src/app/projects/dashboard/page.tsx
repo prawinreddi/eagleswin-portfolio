@@ -12,34 +12,33 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 
-const DashboardDemo = () => {
+const LocalStreamCRM = () => {
   const [activeNav, setActiveNav] = useState('Dashboard');
   const [activeRange, setActiveRange] = useState('1M');
 
   const stats = [
-    { title: 'Total Revenue', value: '$284,520', change: '+12.5%', changeVal: '+$8,450', isUp: true, icon: DollarSign, sparkline: [30, 50, 45, 60, 55, 80, 72, 90, 85, 100] },
-    { title: 'Active Users', value: '14,204', change: '+18.2%', changeVal: '+620', isUp: true, icon: Users, sparkline: [20, 35, 30, 55, 48, 70, 65, 80, 75, 95] },
-    { title: 'Conversions', value: '42.3%', change: '+4.1%', changeVal: '+1.8k', isUp: true, icon: TrendingUp, sparkline: [40, 38, 45, 42, 55, 50, 60, 58, 65, 70] },
-    { title: 'Avg. Order', value: '$245.00', change: '-2.4%', changeVal: '-$6.00', isUp: false, icon: ShoppingCart, sparkline: [90, 85, 88, 82, 80, 78, 75, 76, 72, 70] },
+    { title: 'Monthly Sales', value: '$42,850', change: '+12.5%', changeVal: '+$4,450', isUp: true, icon: DollarSign, sparkline: [30, 50, 45, 60, 55, 80, 72, 90, 85, 100] },
+    { title: 'New Leads', value: '1,204', change: '+18.2%', changeVal: '+120', isUp: true, icon: Users, sparkline: [20, 35, 30, 55, 48, 70, 65, 80, 75, 95] },
+    { title: 'Retention Rate', value: '88.3%', change: '+4.1%', changeVal: '+2.1%', isUp: true, icon: TrendingUp, sparkline: [40, 38, 45, 42, 55, 50, 60, 58, 65, 70] },
+    { title: 'Customer LTV', value: '$1,245', change: '-2.4%', changeVal: '-$12.00', isUp: false, icon: ShoppingCart, sparkline: [90, 85, 88, 82, 80, 78, 75, 76, 72, 70] },
   ];
 
   const transactions = [
-    { id: 1, name: 'Stripe Monthly Payout', category: 'Revenue', date: 'Apr 03, 2026', amount: '+$42,800', status: 'Completed', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100' },
-    { id: 2, name: 'AWS Cloud Services', category: 'Infrastructure', date: 'Apr 02, 2026', amount: '-$1,250', status: 'Pending', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100' },
-    { id: 3, name: 'Premium Subscription', category: 'SaaS', date: 'Apr 02, 2026', amount: '+$4,900', status: 'Completed', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100' },
-    { id: 4, name: 'Figma Enterprise', category: 'Design Tools', date: 'Apr 01, 2026', amount: '-$849', status: 'Completed', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=100' },
-    { id: 5, name: 'Enterprise License Q2', category: 'Revenue', date: 'Mar 31, 2026', amount: '+$18,500', status: 'Completed', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100' },
-    { id: 6, name: 'Vercel Pro Team', category: 'Hosting', date: 'Mar 30, 2026', amount: '-$400', status: 'Failed', avatar: 'https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&q=80&w=100' },
+    { id: 1, name: 'Shopify Online Sale', category: 'Revenue', date: 'Apr 03, 2026', amount: '+$1,280', status: 'Completed', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100' },
+    { id: 2, name: 'Local Facebook Ad', category: 'Marketing', date: 'Apr 02, 2026', amount: '-$450', status: 'Pending', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100' },
+    { id: 3, name: 'In-Store Purchase', category: 'POS', date: 'Apr 02, 2026', amount: '+$840', status: 'Completed', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100' },
+    { id: 4, name: 'Inventory Restock', category: 'Ops', date: 'Apr 01, 2026', amount: '-$2,450', status: 'Completed', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=100' },
+    { id: 5, name: 'Bulk Client Order', category: 'Revenue', date: 'Mar 31, 2026', amount: '+$5,500', status: 'Completed', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100' },
+    { id: 6, name: 'Email Marketing Pro', category: 'Software', date: 'Mar 30, 2026', amount: '-$99', status: 'Failed', avatar: 'https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&q=80&w=100' },
   ];
 
   const navItems = [
     { icon: Home, label: 'Dashboard' },
-    { icon: Wallet, label: 'Portfolio' },
-    { icon: CreditCard, label: 'Payments' },
-    { icon: LayoutGrid, label: 'Apps' },
-    { icon: Activity, label: 'Analytics' },
+    { icon: Users, label: 'Customers' },
+    { icon: Wallet, label: 'Sales' },
+    { icon: Globe, label: 'Marketing' },
     { icon: Calendar, label: 'Schedule' },
-    { icon: Globe, label: 'Markets' },
+    { icon: Activity, label: 'Analytics' },
     { icon: Settings, label: 'Settings' },
   ];
 
@@ -50,10 +49,10 @@ const DashboardDemo = () => {
       {/* Meta Bar */}
       <div className="w-full bg-[#0A0A0A] border-b border-white/10">
         <div className="max-w-full px-6 py-3 flex flex-wrap justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400">
-          <div><span className="text-blue-500">CLIENT:</span> FORTUNE 500 FINTECH</div>
-          <div><span className="text-blue-500">INDUSTRY:</span> QUANTITATIVE ANALYTICS</div>
-          <div><span className="text-blue-500">DELIVERABLES:</span> B2B ADMIN DASHBOARD</div>
-          <div className="font-black"><span className="text-blue-500">RESULTS:</span> 60% IMPROVEMENT IN OPS</div>
+          <div><span className="text-blue-500">CLIENT:</span> REGIONAL RETAIL & SERVICES</div>
+          <div><span className="text-blue-500">INDUSTRY:</span> LOCAL BUSINESS GROWTH</div>
+          <div><span className="text-blue-500">DELIVERABLES:</span> GROWTH CRM PLATFORM</div>
+          <div className="font-black"><span className="text-blue-500">RESULTS:</span> 45% LEAD GROWTH</div>
         </div>
       </div>
 
@@ -62,11 +61,11 @@ const DashboardDemo = () => {
         <aside className="w-64 bg-[#0C0C0C] border-r border-white/5 flex flex-col p-5 hidden lg:flex flex-shrink-0">
           <div className="flex items-center gap-3 mb-10 px-2">
             <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/30">
-              <PieChart className="w-5 h-5 text-white" />
+              <Activity className="w-5 h-5 text-white" />
             </div>
             <div>
-              <span className="text-lg font-bold tracking-tight">FinTrack</span>
-              <div className="text-[9px] text-gray-600 font-bold uppercase tracking-widest">CRM Pro</div>
+              <span className="text-lg font-bold tracking-tight">LocalStream</span>
+              <div className="text-[9px] text-gray-600 font-bold uppercase tracking-widest">SMB Growth Pro</div>
             </div>
           </div>
 
@@ -80,8 +79,8 @@ const DashboardDemo = () => {
               >
                 <item.icon className="w-4 h-4" />
                 <span className="text-sm font-semibold">{item.label}</span>
-                {item.label === 'Payments' && (
-                  <span className="ml-auto bg-blue-600/20 text-blue-400 text-[9px] font-black px-2 py-0.5 rounded-full">3 New</span>
+                {item.label === 'Customers' && (
+                  <span className="ml-auto bg-blue-600/20 text-blue-400 text-[9px] font-black px-2 py-0.5 rounded-full">12 New</span>
                 )}
               </div>
             ))}
@@ -113,8 +112,8 @@ const DashboardDemo = () => {
           {/* Header */}
           <header className="h-18 bg-[#0C0C0C]/60 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-8 py-4 sticky top-0 z-20">
             <div>
-              <h1 className="text-xl font-bold">Financial Overview</h1>
-              <p className="text-gray-600 text-xs font-medium mt-0.5">Thursday, April 3, 2026 · Q2 Performance</p>
+              <h1 className="text-xl font-bold">Business Hub</h1>
+              <p className="text-gray-600 text-xs font-medium mt-0.5">Thursday, April 3, 2026 · Store Performance</p>
             </div>
 
             <div className="flex items-center gap-5">
@@ -144,8 +143,8 @@ const DashboardDemo = () => {
                   />
                 </div>
                 <div className="hidden xl:block">
-                  <div className="text-sm font-bold tracking-tight">Alex Sterling</div>
-                  <div className="text-[9px] uppercase font-black text-gray-600 tracking-widest">Admin</div>
+                  <div className="text-sm font-bold tracking-tight">prawinreddi</div>
+                  <div className="text-[9px] uppercase font-black text-gray-600 tracking-widest">Founder</div>
                 </div>
               </div>
             </div>
@@ -155,8 +154,8 @@ const DashboardDemo = () => {
             {/* Welcome Row */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div>
-                <h2 className="text-2xl font-bold tracking-tight">Good afternoon, Alex 👋</h2>
-                <p className="text-gray-500 text-sm mt-1">Here's what's happening with your portfolio today.</p>
+                <h2 className="text-2xl font-bold tracking-tight">Welcome back, prawinreddi 👋</h2>
+                <p className="text-gray-500 text-sm mt-1">Here's your business snapshot for today.</p>
               </div>
               <div className="flex items-center gap-3">
                 <button className="flex items-center gap-2 px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm font-bold text-gray-400 hover:text-white hover:bg-white/10 transition-all">
@@ -210,8 +209,8 @@ const DashboardDemo = () => {
               <div className="lg:col-span-2 bg-[#0E0E0E] rounded-2xl border border-white/5 p-7">
                 <div className="flex justify-between items-center mb-8">
                   <div>
-                    <h3 className="text-lg font-bold">Revenue Growth</h3>
-                    <p className="text-gray-600 text-xs mt-0.5">Total earnings over time</p>
+                    <h3 className="text-lg font-bold">Sales Growth</h3>
+                    <p className="text-gray-600 text-xs mt-0.5">Revenue and orders over time</p>
                   </div>
                   <div className="flex gap-1.5">
                     {['1D', '1W', '1M', '3M', '1Y'].map(t => (
@@ -260,8 +259,8 @@ const DashboardDemo = () => {
               {/* Asset Pie */}
               <div className="bg-[#0E0E0E] rounded-2xl border border-white/5 p-7 flex flex-col">
                 <div className="mb-6">
-                  <h3 className="text-lg font-bold">Asset Allocation</h3>
-                  <p className="text-gray-600 text-xs mt-0.5">Portfolio breakdown Q2</p>
+                  <h3 className="text-lg font-bold">Lead Attribution</h3>
+                  <p className="text-gray-600 text-xs mt-0.5">Where your customers find you</p>
                 </div>
                 <div className="flex-1 flex items-center justify-center relative">
                   <svg className="w-48 h-48 transform -rotate-90" viewBox="0 0 192 192">
@@ -277,10 +276,10 @@ const DashboardDemo = () => {
                 </div>
                 <div className="space-y-3 mt-4">
                   {[
-                    { color: 'bg-blue-500', label: 'Equities', value: '42.5%' },
-                    { color: 'bg-purple-500', label: 'Crypto', value: '31.2%' },
-                    { color: 'bg-emerald-500', label: 'Bonds', value: '18.8%' },
-                    { color: 'bg-gray-600', label: 'Cash', value: '7.5%' },
+                    { color: 'bg-blue-500', label: 'Facebook Ads', value: '42.5%' },
+                    { color: 'bg-purple-500', label: 'Google Search', value: '31.2%' },
+                    { color: 'bg-emerald-500', label: 'Referrals', value: '18.8%' },
+                    { color: 'bg-gray-600', label: 'Walk-ins', value: '7.5%' },
                   ].map((asset, i) => (
                     <div key={i} className="flex justify-between items-center text-xs">
                       <div className="flex items-center gap-2 font-bold text-gray-400">
@@ -297,9 +296,9 @@ const DashboardDemo = () => {
             {/* Quick Stats Row */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {[
-                { title: 'Monthly Recurring Revenue', value: '$84,200', sub: '₹70.2L', icon: TrendingUp, color: 'green', up: true, pct: '+8.4%' },
-                { title: 'Customer Churn Rate', value: '1.2%', sub: '-0.3% this month', icon: Users, color: 'blue', up: true, pct: '-0.3%' },
-                { title: 'Net Promoter Score', value: '76', sub: '+4 vs last quarter', icon: Activity, color: 'purple', up: true, pct: '+4 pts' },
+                { title: 'Store Activity', value: '$84,200', sub: 'Regional Sales', icon: TrendingUp, color: 'green', up: true, pct: '+8.4%' },
+                { title: 'New Customer Rate', value: '1.2%', sub: 'Avg 45 per day', icon: Users, color: 'blue', up: true, pct: '-0.3%' },
+                { title: 'Customer Satisfaction', value: '92%', sub: '+4% vs last mo', icon: Activity, color: 'purple', up: true, pct: '+4 pts' },
               ].map((kpi, i) => (
                 <motion.div
                   key={i}
@@ -378,4 +377,4 @@ const DashboardDemo = () => {
   );
 };
 
-export default DashboardDemo;
+export default LocalStreamCRM;
