@@ -141,7 +141,7 @@ const Demos = () => {
             <div className="aspect-[16/9] w-full relative overflow-hidden">
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1505751172107-597d70414902?q=80&w=2000&auto=format&fit=crop')" }}
+                style={{ backgroundImage: "url('/projects/medsync.png')" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent" />
             </div>
