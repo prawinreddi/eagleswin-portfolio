@@ -4,7 +4,7 @@ import { ShoppingBag, Search, Menu, User } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
+    <header className="sticky top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         {/* Mobile Menu */}
         <button className="md:hidden p-2 -ml-2 text-stone-600">

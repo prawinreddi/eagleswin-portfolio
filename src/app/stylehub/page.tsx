@@ -1,6 +1,6 @@
-import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Featured from "./components/Featured";
+import ProductsGrid from "./components/ProductsGrid";
 
 export const metadata = {
   title: "StyleHub | Premium Lifestyle Essentials",
@@ -10,10 +10,9 @@ export const metadata = {
 export default function StyleHubHome() {
   return (
     <>
-      <Navbar />
       <Hero />
+      <ProductsGrid />
       <Featured />
-      {/* Brand story / Instagram feed will follow here later */}
     </>
   );
 }
