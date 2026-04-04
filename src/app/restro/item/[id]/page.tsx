@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import { ChevronLeft, Minus, Plus, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
+import DishImage from '../../components/DishImage';
 
 export default function ItemPage() {
   const { id } = useParams();
@@ -31,7 +32,7 @@ export default function ItemPage() {
 
       <div className="bg-white rounded-3xl overflow-hidden shadow-md">
         <div className="relative aspect-[16/7] w-full">
-          <img src={item.image} alt={item.name} className="object-cover w-full h-full" />
+          <DishImage src={item.image} alt={item.name} className="object-cover w-full h-full" />
           <div className="absolute top-4 left-4 flex gap-2">
             <span className={`w-6 h-6 rounded-sm border-2 flex items-center justify-center bg-white ${item.isVeg ? 'border-green-600' : 'border-red-600'}`}>
               <span className={`w-3 h-3 rounded-full ${item.isVeg ? 'bg-green-600' : 'bg-red-600'}`}></span>

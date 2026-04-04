@@ -7,6 +7,7 @@ import { useCart } from '../context/CartContext';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
+import DishImage from '../components/DishImage';
 
 function MenuContent() {
   const searchParams = useSearchParams();
@@ -83,7 +84,7 @@ function MenuContent() {
                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col"
               >
                 <Link href={`/restro/item/${item.id}`} className="relative aspect-[16/9] overflow-hidden block">
-                  <img src={item.image} alt={item.name} className="object-cover w-full h-full hover:scale-105 transition-transform duration-500" />
+                  <DishImage src={item.image} alt={item.name} className="object-cover w-full h-full hover:scale-105 transition-transform duration-500" />
                   <div className="absolute top-3 left-3 flex gap-1 items-center">
                     <span className={`w-5 h-5 rounded-sm border-2 flex items-center justify-center bg-white ${item.isVeg ? 'border-green-600' : 'border-red-600'}`}>
                       <span className={`w-2.5 h-2.5 rounded-full ${item.isVeg ? 'bg-green-600' : 'bg-red-600'}`}></span>

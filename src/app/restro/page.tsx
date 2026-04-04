@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Star, Clock, Bike, ChevronRight, Tag } from 'lucide-react';
 import { menuItems, categories, formatPrice } from './data';
 import { useCart } from './context/CartContext';
+import DishImage from './components/DishImage';
 
 function ItemCard({ item }: { item: typeof menuItems[0] }) {
   const { addItem, items } = useCart();
@@ -17,7 +18,7 @@ function ItemCard({ item }: { item: typeof menuItems[0] }) {
       className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
-        <img src={item.image} alt={item.name} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" />
+        <DishImage src={item.image} alt={item.name} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" />
         <div className="absolute top-3 left-3 flex gap-1">
           <span className={`w-5 h-5 rounded-sm border-2 flex items-center justify-center ${item.isVeg ? 'border-green-600 bg-white' : 'border-red-600 bg-white'}`}>
             <span className={`w-2.5 h-2.5 rounded-full ${item.isVeg ? 'bg-green-600' : 'bg-red-600'}`}></span>
