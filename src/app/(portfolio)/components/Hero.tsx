@@ -162,7 +162,7 @@ export default function Hero() {
               className="text-5xl md:text-7xl font-black text-white leading-tight tracking-tighter mb-8"
             >
               Full Stack Developer <br />
-              <span className="text-indigo-500">building scalable </span> <br /> 
+              building scalable <br /> 
               web apps.
             </motion.h1>
 
