@@ -55,7 +55,6 @@ const Footer = () => {
   const navLinks = [
     'Home',
     'Services',
-    'Projects',
     'Pricing',
     'Contact',
   ];
