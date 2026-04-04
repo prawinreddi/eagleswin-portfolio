@@ -208,14 +208,54 @@ const stockPlans = [
   },
 ];
 
+const clinicPlans = [
+  {
+    name: 'Basic Clinic',
+    price: '₹12,000',
+    features: [
+      'Doctor Profile Page',
+      'Clinic Timings & Fees',
+      'Basic Contact Form',
+      'Mobile Responsive',
+      'Delivery: 5-7 Days',
+    ],
+    popular: false,
+  },
+  {
+    name: 'Standard System',
+    price: '₹16,000',
+    features: [
+      'Live Slot Booking',
+      'Calendar Availability',
+      'Patient Details Form',
+      'WhatsApp Confirmation',
+      'Delivery: 10-14 Days',
+    ],
+    popular: true,
+  },
+  {
+    name: 'Premium Network',
+    price: '₹20,000+',
+    features: [
+      'Appointment Reminders',
+      'Multi-Doctor Support',
+      'Patient History Log',
+      'Digital Prescription Store',
+      'Delivery: 15-20 Days',
+    ],
+    popular: false,
+  },
+];
+
 const Pricing = () => {
-  const [activeTab, setActiveTab] = useState<'commerce' | 'resto' | 'estate' | 'coach' | 'stock'>('commerce');
+  const [activeTab, setActiveTab] = useState<'commerce' | 'resto' | 'estate' | 'coach' | 'stock' | 'clinic'>('commerce');
 
   const currentPlans = 
     activeTab === 'commerce' ? commercePlans : 
     activeTab === 'resto' ? restoPlans :
     activeTab === 'estate' ? estatePlans :
-    activeTab === 'coach' ? coachPlans : stockPlans;
+    activeTab === 'coach' ? coachPlans : 
+    activeTab === 'stock' ? stockPlans : clinicPlans;
 
   return (
     <section id="pricing" className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -247,61 +287,27 @@ const Pricing = () => {
         {/* Tab Switcher */}
         <div className="flex justify-center mb-16">
           <div className="p-1 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 flex flex-wrap justify-center gap-1">
-            <button
-              onClick={() => setActiveTab('commerce')}
-              className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
-                activeTab === 'commerce' 
-                  ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
-                  : 'text-gray-500 hover:text-white'
-              }`}
-            >
-              <ShoppingBag className="w-4 h-4" />
-              E-Commerce
-            </button>
-            <button
-              onClick={() => setActiveTab('resto')}
-              className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
-                activeTab === 'resto' 
-                  ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
-                  : 'text-gray-500 hover:text-white'
-              }`}
-            >
-              <Utensils className="w-4 h-4" />
-              Restaurant
-            </button>
-            <button
-              onClick={() => setActiveTab('estate')}
-              className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
-                activeTab === 'estate' 
-                  ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
-                  : 'text-gray-500 hover:text-white'
-              }`}
-            >
-              <Home className="w-4 h-4" />
-              Real Estate
-            </button>
-            <button
-              onClick={() => setActiveTab('coach')}
-              className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
-                activeTab === 'coach' 
-                  ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
-                  : 'text-gray-500 hover:text-white'
-              }`}
-            >
-              <GraduationCap className="w-4 h-4" />
-              Coaching
-            </button>
-            <button
-              onClick={() => setActiveTab('stock')}
-              className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
-                activeTab === 'stock' 
-                  ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
-                  : 'text-gray-500 hover:text-white'
-              }`}
-            >
-              <Database className="w-4 h-4" />
-              Inventory
-            </button>
+            {[
+              { id: 'commerce', label: 'E-Commerce', icon: ShoppingBag },
+              { id: 'resto', label: 'Restaurant', icon: Utensils },
+              { id: 'estate', label: 'Real Estate', icon: Home },
+              { id: 'coach', label: 'Coaching', icon: GraduationCap },
+              { id: 'stock', label: 'Inventory', icon: Database },
+              { id: 'clinic', label: 'Clinic', icon: Star },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as any)}
+                className={`px-5 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
+                  activeTab === tab.id 
+                    ? 'bg-[#00e5ff] text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]' 
+                    : 'text-gray-500 hover:text-white'
+                }`}
+              >
+                <tab.icon className="w-4 h-4" />
+                {tab.label}
+              </button>
+            ))}
           </div>
         </div>
 
