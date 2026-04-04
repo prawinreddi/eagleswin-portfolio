@@ -7,6 +7,14 @@ import Link from 'next/link';
 
 export default function MedHome() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  const filteredDoctors = doctors.filter(doc => {
+    const matchSearch = doc.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                       doc.specialization.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchCat = activeCategory === 'all' || doc.category === activeCategory;
+    return matchSearch && matchCat;
+  });
 
   return (
     <div className="bg-slate-50">
@@ -69,72 +77,82 @@ export default function MedHome() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+            <button onClick={() => setActiveCategory('all')} className={`flex flex-col items-center gap-4 p-8 rounded-3xl border transition-all active:scale-95 group ${activeCategory === 'all' ? 'bg-teal-500 border-teal-500 text-white' : 'border-slate-50 bg-slate-50/50 hover:bg-teal-50 hover:border-teal-200'}`}>
+              <span className="text-4xl group-hover:scale-125 transition-transform duration-300">🏥</span>
+              <span className={`text-center text-[10px] font-black uppercase tracking-wider ${activeCategory === 'all' ? 'text-white' : 'text-slate-800'}`}>All Doctors</span>
+            </button>
             {doctorCategories.map(cat => (
-              <Link key={cat.id} href="#" className="flex flex-col items-center gap-4 p-8 rounded-3xl border border-slate-50 bg-slate-50/50 hover:bg-teal-500 hover:border-teal-500 hover:text-white transition-all group active:scale-95">
+              <button key={cat.id} onClick={() => setActiveCategory(cat.id)} className={`flex flex-col items-center gap-4 p-8 rounded-3xl border transition-all active:scale-95 group ${activeCategory === cat.id ? 'bg-teal-500 border-teal-500 text-white' : 'border-slate-50 bg-slate-50/50 hover:bg-teal-50 hover:border-teal-200'}`}>
                 <span className="text-4xl group-hover:scale-125 transition-transform duration-300">{cat.emoji}</span>
-                <span className="text-center text-xs font-black uppercase tracking-wider text-slate-800 group-hover:text-white">{cat.name}</span>
-              </Link>
+                <span className={`text-center text-[10px] font-black uppercase tracking-wider ${activeCategory === cat.id ? 'text-white' : 'text-slate-800'}`}>{cat.name}</span>
+              </button>
             ))}
           </div>
         </div>
       </section>
 
       {/* FEATURED DOCTORS */}
-      <section className="py-24 max-w-7xl mx-auto px-4">
+      <section id="doctors" className="py-24 max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">Our Top Rated Doctors</h2>
+          <h2 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">
+            {activeCategory === 'all' ? 'Our Top Rated Doctors' : `Top ${doctorCategories.find(c => c.id === activeCategory)?.name}s`}
+          </h2>
           <p className="text-slate-500 max-w-lg mx-auto font-medium leading-relaxed">Book with confidence. Verified qualifications and verified patient reviews from local Hyderabad community.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {doctors.map(doctor => (
-            <motion.div
-              key={doctor.id}
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/60 border border-slate-50 group"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img src={doctor.image} alt={doctor.name} className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute top-6 left-6 flex gap-2">
-                  <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1 text-[10px] font-black text-slate-800 shadow-sm">
-                    <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" /> 4.9 (2k+)
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-8">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-black text-slate-900 mb-1">{doctor.name}</h3>
-                  <p className="text-teal-600 font-bold text-xs uppercase tracking-widest">{doctor.specialization}</p>
-                </div>
-
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-center justify-between text-sm py-3 border-b border-slate-50">
-                    <div className="flex items-center gap-2 text-slate-400 font-bold">
-                      <Stethoscope className="w-4 h-4 text-teal-400" /> Experience
+          {filteredDoctors.length === 0 ? (
+            <div className="col-span-full py-20 text-center text-slate-400 font-bold">No doctors found in this category.</div>
+          ) : (
+            filteredDoctors.map(doctor => (
+              <motion.div
+                key={doctor.id}
+                whileHover={{ y: -10 }}
+                className="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/60 border border-slate-50 group"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img src={doctor.image} alt={doctor.name} className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute top-6 left-6 flex gap-2">
+                    <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1 text-[10px] font-black text-slate-800 shadow-sm">
+                      <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" /> 4.9 (2k+)
                     </div>
-                    <span className="font-bold text-slate-700">{doctor.experience}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm py-3 border-b border-slate-50">
-                    <div className="flex items-center gap-2 text-slate-400 font-bold">
-                      <MapPin className="w-4 h-4 text-teal-400" /> Location
-                    </div>
-                    <span className="font-bold text-slate-700">Hyderabad</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm py-3">
-                    <div className="flex items-center gap-2 text-slate-400 font-bold">
-                      <User className="w-4 h-4 text-teal-400" /> Appointment Fee
-                    </div>
-                    <span className="font-black text-slate-900 text-lg">{formatCurrency(doctor.fee)}</span>
                   </div>
                 </div>
 
-                <Link href={`/med/doctor/${doctor.id}`} className="block w-full bg-slate-900 hover:bg-teal-600 text-white text-center font-black py-5 rounded-2xl transition-all shadow-xl hover:shadow-teal-100 uppercase tracking-widest text-xs">
-                  Book Appointment
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+                <div className="p-8">
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-black text-slate-900 mb-1">{doctor.name}</h3>
+                    <p className="text-teal-600 font-bold text-xs uppercase tracking-widest">{doctor.specialization}</p>
+                  </div>
+
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-center justify-between text-sm py-3 border-b border-slate-50">
+                      <div className="flex items-center gap-2 text-slate-400 font-bold">
+                        <Stethoscope className="w-4 h-4 text-teal-400" /> Experience
+                      </div>
+                      <span className="font-bold text-slate-700">{doctor.experience}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm py-3 border-b border-slate-50">
+                      <div className="flex items-center gap-2 text-slate-400 font-bold">
+                        <MapPin className="w-4 h-4 text-teal-400" /> Location
+                      </div>
+                      <span className="font-bold text-slate-700">Hyderabad</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm py-3">
+                      <div className="flex items-center gap-2 text-slate-400 font-bold">
+                        <User className="w-4 h-4 text-teal-400" /> Appointment Fee
+                      </div>
+                      <span className="font-black text-slate-900 text-lg">{formatCurrency(doctor.fee)}</span>
+                    </div>
+                  </div>
+
+                  <Link href={`/med/doctor/${doctor.id}`} className="block w-full bg-slate-900 hover:bg-teal-600 text-white text-center font-black py-5 rounded-2xl transition-all shadow-xl hover:shadow-teal-100 uppercase tracking-widest text-xs">
+                    Book Appointment
+                  </Link>
+                </div>
+              </motion.div>
+            ))
+          )}
         </div>
       </section>
 
