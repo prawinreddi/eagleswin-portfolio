@@ -2,8 +2,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Plus } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 export default function ProductsGrid() {
+  const { addItem } = useCart();
   const products = [
     {
       id: 1,
@@ -77,7 +79,20 @@ export default function ProductsGrid() {
                 </Link>
                 
                 {/* Quick Add Button / Interaction */}
-                <button className="absolute bottom-4 left-4 right-4 bg-white text-black py-3 px-4 flex items-center justify-center gap-2 font-medium text-xs uppercase tracking-widest translate-y-[150%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <button 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addItem({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      color: product.color,
+                      image: product.image,
+                      size: "M" // Default size for quick add
+                    });
+                  }}
+                  className="absolute bottom-4 left-4 right-4 bg-white text-black py-3 px-4 flex items-center justify-center gap-2 font-medium text-xs uppercase tracking-widest translate-y-[150%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                >
                   <Plus className="w-4 h-4" /> Quick Add
                 </button>
               </div>

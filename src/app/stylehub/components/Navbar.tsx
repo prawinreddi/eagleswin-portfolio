@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
 import { ShoppingBag, Search, Menu, User } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 export default function Navbar() {
+  const { cartCount, setIsCartOpen } = useCart();
   return (
     <header className="sticky top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
@@ -32,9 +34,13 @@ export default function Navbar() {
           <button className="p-2 hover:text-black transition-colors hidden sm:block">
             <User className="w-5 h-5" />
           </button>
-          <button className="p-2 hover:text-black transition-colors relative">
+          <button onClick={() => setIsCartOpen(true)} className="p-2 hover:text-black transition-colors relative">
             <ShoppingBag className="w-5 h-5" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-black rounded-full"></span>
+            {cartCount > 0 && (
+              <span className="absolute top-0 right-0 w-4 h-4 bg-black text-white text-[9px] flex items-center justify-center rounded-full font-bold">
+                {cartCount}
+              </span>
+            )}
           </button>
         </div>
       </div>

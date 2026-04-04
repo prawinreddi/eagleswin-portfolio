@@ -7,14 +7,12 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen min-h-[600px] flex items-center pt-20">
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/stylehub/hero-banner.png"
+        <img
+          src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2670&auto=format&fit=crop"
           alt="StyleHub Premium Collection"
-          fill
-          priority
-          className="object-cover object-[70%_30%] md:object-center"
+          className="object-cover object-[70%_30%] md:object-center w-full h-full"
         />
-        <div className="absolute inset-0 bg-stone-900/20" />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10 w-full">
