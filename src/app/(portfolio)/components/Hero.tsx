@@ -1,76 +1,217 @@
-"use client";
+'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useEffect, useState, useRef } from 'react';
 
-const Hero = () => {
+const MagneticButton = ({ children, className, onClick }: any) => {
+  const ref = useRef<HTMLButtonElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
+
+  const handleMouse = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!ref.current) return;
+    const { clientX, clientY } = e;
+    const { height, width, left, top } = ref.current.getBoundingClientRect();
+    const middleX = clientX - (left + width / 2);
+    const middleY = clientY - (top + height / 2);
+    x.set(middleX * 0.3);
+    y.set(middleY * 0.3);
+  };
+
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 px-4 bg-[#030303] overflow-hidden">
-      
-      {/* 1. Dynamic Background Engine (Subtle) */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-indigo-600/10 rounded-full blur-[180px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[50%] bg-blue-500/10 rounded-full blur-[150px]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto w-full relative z-10 text-center">
-        
-        {/* Simple & Powerful Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl md:text-8xl font-black text-white leading-[1] tracking-tighter mb-10"
-        >
-          Full Stack Developer <br />
-          building scalable <br /> 
-          web apps.
-        </motion.h1>
-
-        {/* Subtext */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-stone-400 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed mb-16 font-medium"
-        >
-          I help startups and businesses create fast, modern, and user-friendly digital products.
-        </motion.p>
-
-        {/* Action Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6"
-        >
-          <button 
-            onClick={() => document.getElementById('demos')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group relative px-12 py-6 bg-white text-black rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-all hover:bg-stone-200 active:scale-95 flex items-center gap-2"
-          >
-            View Projects <ArrowRight className="w-4 h-4" />
-          </button>
-          
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-12 py-6 bg-white/5 border border-white/10 text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-white/10 transition-all flex items-center gap-2"
-          >
-            Contact Me
-          </button>
-        </motion.div>
-
-      </div>
-      
-      {/* Subtle Scroll Indicator */}
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-20"
-      >
-        <div className="w-px h-12 bg-white" />
-      </motion.div>
-    </section>
+    <motion.button
+      ref={ref}
+      onMouseMove={handleMouse}
+      onMouseLeave={reset}
+      onClick={onClick}
+      style={{ x: springX, y: springY }}
+      className={`relative overflow-hidden ${className}`}
+    >
+      {children}
+    </motion.button>
   );
 };
 
-export default Hero;
+export default function Hero() {
+  const [isClient, setIsClient] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    setIsClient(true);
+    
+    // Ambient cursor tracking for background glow
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+      const x = (e.clientX - left) / width;
+      const y = (e.clientY - top) / height;
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Use viewport-relative translate for GPU-composited animation (no layout reflow)
+  const glowXraw = useTransform(mouseX, [0, 1], [-40, 40]);
+  const glowYraw = useTransform(mouseY, [0, 1], [-40, 40]);
+  const glowX = useSpring(glowXraw, { stiffness: 40, damping: 25 });
+  const glowY = useSpring(glowYraw, { stiffness: 40, damping: 25 });
+
+  // Staggered text reveal variants
+  const containerVars = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVars = {
+    hidden: { y: 100, opacity: 0, rotateX: -40 },
+    show: { 
+      y: 0, 
+      opacity: 1, 
+      rotateX: 0,
+      transition: { type: "spring" as const, stiffness: 100, damping: 20, mass: 1 } 
+    },
+  };
+
+  return (
+    <section ref={containerRef} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Dynamic Cinematic Lighting */}
+      <motion.div
+        className="absolute w-[800px] h-[800px] rounded-full blur-[120px] pointer-events-none mix-blend-screen bg-[#00e5ff]"
+        style={{
+          top: '50%',
+          left: '50%',
+          translateX: '-50%',
+          translateY: '-50%',
+          x: glowX,
+          y: glowY,
+          opacity: isClient ? 0.2 : 0,
+          willChange: 'transform',
+        }}
+      />
+      {/* Subtle slow pulsing background orb */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-radial from-white/[0.03] to-transparent rounded-full blur-[100px] animate-pulse-glow" />
+
+      {/* Grid Overlay Texture */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" style={{ maskImage: 'radial-gradient(ellipse at center, black, transparent 80%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black, transparent 80%)' }} />
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 xl:px-12 flex flex-col items-center text-center">
+        
+        {/* Availability Badge */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-8"
+        >
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00e5ff] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00e5ff] shadow-[0_0_10px_#00e5ff]"></span>
+          </span>
+          <span className="text-sm font-semibold tracking-wider text-gray-300 uppercase">Available for New Projects</span>
+        </motion.div>
+
+        {/* Main Headline */}
+        <motion.div
+          variants={containerVars}
+          initial="hidden"
+          animate="show"
+          className="mb-8"
+        >
+          <motion.p 
+            variants={itemVars}
+            className="text-[#00e5ff] font-black uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-6 block"
+          >
+            Founder & Lead Developer — <span className="text-white">prawinreddi</span>
+          </motion.p>
+          
+          <h1 className="text-[12vw] sm:text-6xl md:text-8xl lg:text-[100px] font-black leading-[0.9] tracking-tighter" style={{ perspective: '1000px' }}>
+            <motion.div variants={itemVars} className="overflow-hidden pb-2">
+              <span className="block text-white">Engineering</span>
+            </motion.div>
+            <motion.div variants={itemVars} className="overflow-hidden pb-4 flex justify-center items-center gap-4 flex-wrap">
+              <span className="block italic text-gray-500 font-light text-[8vw] sm:text-5xl md:text-7xl lg:text-[80px]">High-Growth</span>
+              <span className="block text-gradient-cyan">Business Assets.</span>
+            </motion.div>
+          </h1>
+        </motion.div>
+
+        {/* Subtitle (Why/What) */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="text-lg md:text-xl text-gray-400 max-w-4xl mx-auto font-medium mb-12 leading-relaxed"
+        >
+          నేను <span className="text-white">prawinreddi</span>. లోకల్ బిజినెస్లకు ప్రీమియం వెబ్ పోర్టల్స్ మరియు ఆటోమేషన్ సొల్యూషన్స్ అందిస్తాను. 
+          With <span className="text-white">99% Performance Scores</span> and trust from <span className="text-[#00e5ff]">50+ Global Clients</span>, I transform your vision into a revenue-driving machine.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 1, delay: 1 }}
+           className="flex flex-col sm:flex-row items-center gap-6"
+        >
+          <MagneticButton 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group px-8 py-4 bg-white text-black font-bold rounded-full text-lg flex items-center gap-2 hover:bg-gray-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+          >
+            Start a Project
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </MagneticButton>
+
+          <MagneticButton 
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group px-8 py-4 glass-panel text-white font-bold rounded-full text-lg flex items-center gap-2 hover:bg-white/10 transition-colors"
+          >
+            Explore Work
+          </MagneticButton>
+        </motion.div>
+
+      </div>
+
+      {/* Social Proof Numbers - Absolute Floating */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="hidden lg:flex absolute bottom-12 left-12 flex-col gap-1"
+      >
+        <span className="text-4xl font-bold text-white">50<span className="text-[#00e5ff]">+</span></span>
+        <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">Global Clients</span>
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.7 }}
+        className="hidden lg:flex absolute bottom-12 right-12 flex-col gap-1 text-right"
+      >
+        <span className="text-4xl font-bold text-white">99<span className="text-[#00e5ff]">%</span></span>
+        <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">Performance Score</span>
+      </motion.div>
+
+    </section>
+  );
+}
