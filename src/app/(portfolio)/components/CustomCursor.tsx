@@ -50,9 +50,14 @@ export default function CustomCursor() {
     window.addEventListener('mousemove', move, { passive: true });
     window.addEventListener('mouseover', over, { passive: true });
 
+    // Hide real cursor in portfolio areas
+    document.body.style.cursor = 'none';
+
     return () => {
       window.removeEventListener('mousemove', move);
       window.removeEventListener('mouseover', over);
+      // Restore real cursor when leaving portfolio
+      document.body.style.cursor = 'auto';
     };
   }, [cursorX, cursorY]);
 
