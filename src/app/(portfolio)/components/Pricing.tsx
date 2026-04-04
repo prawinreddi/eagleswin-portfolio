@@ -20,7 +20,7 @@ const commercePlans = [
   },
   {
     name: 'Standard Store',
-    price: '₹15,000',
+    price: '₹16,000',
     features: [
       '8 High-Conversion Pages',
       'Sanity CMS Admin Panel',
@@ -33,7 +33,7 @@ const commercePlans = [
   },
   {
     name: 'Premium Store',
-    price: '₹20,000+',
+    price: '₹22,000+',
     features: [
       'Unlimited High-End Pages',
       'Shiprocket API Integration',
@@ -49,7 +49,7 @@ const commercePlans = [
 const restoPlans = [
   {
     name: 'Basic Menu',
-    price: '₹8,000',
+    price: '₹5,500',
     features: [
       'Digital Menu + Cart',
       'Razorpay Integration',
@@ -62,7 +62,7 @@ const restoPlans = [
   },
   {
     name: 'Standard System',
-    price: '₹12,000',
+    price: '₹9,500',
     features: [
       'Full Ordering System',
       'Order Management Admin',
@@ -75,7 +75,7 @@ const restoPlans = [
   },
   {
     name: 'Premium Network',
-    price: '₹18,000+',
+    price: '₹16,000+',
     features: [
       'Loyalty Points System',
       'Multi-Branch Support',
@@ -91,7 +91,7 @@ const restoPlans = [
 const estatePlans = [
   {
     name: 'Agent Landing',
-    price: '₹15,000',
+    price: '₹10,500',
     features: [
       'Property Listings Page',
       'WhatsApp Lead Capture',
@@ -104,7 +104,7 @@ const estatePlans = [
   },
   {
     name: 'Property Portal',
-    price: '₹25,000',
+    price: '₹20,000',
     features: [
       'Advanced Search Filters',
       'Admin Dashboard (CMS)',
@@ -117,7 +117,7 @@ const estatePlans = [
   },
   {
     name: 'Real Estate Hub',
-    price: '₹45,000+',
+    price: '₹40,000+',
     features: [
       'Virtual Tour Setup',
       'Google Maps API Integration',
@@ -133,7 +133,7 @@ const estatePlans = [
 const coachPlans = [
   {
     name: 'Batch Funnel',
-    price: '₹3,000',
+    price: '₹2,000',
     features: [
       'Single High-Conv Page',
       'Urgency Countdowns',
@@ -145,7 +145,7 @@ const coachPlans = [
   },
   {
     name: 'Academy Hero',
-    price: '₹5,000',
+    price: '₹4,000',
     features: [
       'Multi-Batch Management',
       'Faculty Profiles',
@@ -157,7 +157,7 @@ const coachPlans = [
   },
   {
     name: 'Elite Growth',
-    price: '₹8,000',
+    price: '₹7,000+',
     features: [
       'LMS Teaser Integration',
       'Student Login Portal',
@@ -172,7 +172,7 @@ const coachPlans = [
 const stockPlans = [
   {
     name: 'Basic Inventory',
-    price: '₹20,000',
+    price: '₹14,000',
     features: [
       'Item Management',
       'Stock In/Out Tracking',
@@ -184,7 +184,7 @@ const stockPlans = [
   },
   {
     name: 'SaaS Dashboard',
-    price: '₹30,000',
+    price: '₹24,000',
     features: [
       'Customer Debt Ledger',
       'WhatsApp Auto-Alerts',
@@ -196,7 +196,7 @@ const stockPlans = [
   },
   {
     name: 'Enterprise ERP',
-    price: '₹40,000+',
+    price: '₹36,000+',
     features: [
       'Barcode Scanning Port',
       'Multi-User Roles',
@@ -211,7 +211,7 @@ const stockPlans = [
 const clinicPlans = [
   {
     name: 'Basic Clinic',
-    price: '₹12,000',
+    price: '₹8,500',
     features: [
       'Doctor Profile Page',
       'Clinic Timings & Fees',
@@ -223,7 +223,7 @@ const clinicPlans = [
   },
   {
     name: 'Standard System',
-    price: '₹16,000',
+    price: '₹13,000',
     features: [
       'Live Slot Booking',
       'Calendar Availability',
@@ -235,7 +235,7 @@ const clinicPlans = [
   },
   {
     name: 'Premium Network',
-    price: '₹20,000+',
+    price: '₹18,000+',
     features: [
       'Appointment Reminders',
       'Multi-Doctor Support',
