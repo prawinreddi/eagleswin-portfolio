@@ -2,7 +2,7 @@
 import { useParams, useRouter } from 'next/navigation';
 import { properties, formatCurrency } from '../../data';
 import { useState, useMemo } from 'react';
-import { ChevronLeft, Star, Clock, Calendar, Check, Stethoscope, Heart, ArrowRight, MessageCircle, Info, ShieldCheck, Layers, Maximize, Home, Mail, Phone, MapPin, Globe, CreditCard, Share2, Youtube } from 'lucide-react';
+import { ChevronLeft, Star, Clock, Calendar, Check, Stethoscope, Heart, ArrowRight, MessageCircle, Info, ShieldCheck, Layers, Maximize, Home, Mail, Phone, MapPin, Globe, CreditCard, Share2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function PropertyDetailPage() {
