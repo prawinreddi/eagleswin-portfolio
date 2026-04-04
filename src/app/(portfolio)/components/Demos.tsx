@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Demos = () => {
   return (
-    <section id="demos" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+    <section id="projects" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
       <div className="absolute inset-0 opacity-20 pointer-events-none" 
         style={{
           backgroundImage: 'radial-gradient(#00e5ff 1px, transparent 1px)',
