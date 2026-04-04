@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Sandeep Rao",
     role: "Proprietor, StyleHub Textiles",
-    content: "StyleHub మా రిటైల్ బిజినెస్ ని అనూహ్యంగా మార్చేసింది. మా కస్టమర్స్ ఇప్పుడు డైరెక్ట్ గా ఇన్స్టాగ్రామ్ నుండి ఆర్డర్స్ చేస్తున్నారు. Razorpay మరియు WhatsApp అలర్ట్స్ మా పనిని చాలా ఈజీ చేశాయి. Best Investment for Retailers!",
+    content: "StyleHub completely transformed our retail business. Our customers are now ordering directly via Instagram. Razorpay and WhatsApp alerts have made our operations effortless. A game-changer for retailers!",
     image: "https://i.pravatar.cc/150?u=rao",
     project: "E-Commerce",
     rating: 5
@@ -15,7 +15,7 @@ const testimonials = [
   {
     name: "Dr. Anirudh Varma",
     role: "Chief Dentist, Varma Dental Clinic",
-    content: "MedSync బుకింగ్ సిస్టమ్ వచ్చిన తర్వాత మాకు ఫోన్ కాల్స్ బాగా తగ్గాయి. పేషెంట్స్ డైరెక్ట్ గా వాళ్ళకి నచ్చిన స్లాట్ ని బుక్ చేసుకుంటున్నారు. ఆటోమేటిక్ వాట్సాప్ రిమైండర్స్ వల్ల ‘నో-షో’లు 80% తగ్గాయి. Highly Recommended!",
+    content: "The MedSync booking system has significantly reduced our phone workload. Patients now book their preferred slots directly. Automatic WhatsApp reminders decreased 'no-shows' by 80%. Highly recommended!",
     image: "https://i.pravatar.cc/150?u=anirudh",
     project: "Healthcare",
     rating: 5
@@ -23,7 +23,7 @@ const testimonials = [
   {
     name: "Kiran Kumar",
     role: "Director, KKR Villa Projects",
-    content: "మేము EstateSync వాడుతున్నాం. మా ప్రాపర్టీ లీడ్స్ ఇప్పుడు చాలా క్వాలిటీ గా వస్తున్నాయి. విజిటర్స్ కి floor plans మరియు Maps క్లియర్ గా కనిపిస్తున్నాయి. మా సేల్స్ టీమ్ కి లీడ్స్ మేనేజ్ చేయడం ఇప్పుడు చాలా స్మూత్ గా ఉంది.",
+    content: "Using EstateSync has drastically improved our property lead quality. The clear floor plans and integrated Maps provide a premium experience that our clients love. Our sales team is much more efficient now.",
     image: "https://i.pravatar.cc/150?u=kiran",
     project: "Real Estate",
     rating: 5
@@ -31,7 +31,7 @@ const testimonials = [
   {
     name: "Mohammad Arif",
     role: "Wholesale Hardware Distributor",
-    content: "StockSync డాష్‌బోర్డ్ మా గోడౌన్ ఇన్వెంటరీ ని పర్‌ఫెక్ట్ గా ట్రాక్ చేస్తోంది. స్టాక్ తక్కువ అవ్వగానే నాకు వాట్సాప్ మెసేజ్ వచ్చే ఫీచర్ అద్భుతం. ఇప్పుడు మాకు 'Out of Stock' అనే మాటే వినిపించడం లేదు.",
+    content: "StockSync tracks our warehouse inventory perfectly. The WhatsApp low-stock alert feature is brilliant. We haven't faced an 'Out of Stock' situation since the day we started using this dashboard.",
     image: "https://i.pravatar.cc/150?u=arif",
     project: "Inventory SaaS",
     rating: 5
