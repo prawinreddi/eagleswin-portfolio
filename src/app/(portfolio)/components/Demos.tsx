@@ -139,10 +139,9 @@ const Demos = () => {
             className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#111] shadow-2xl transition-all"
           >
             <div className="aspect-[16/9] w-full relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=2000&auto=format&fit=crop"
-                alt="MedSync Healthcare"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1505751172107-597d70414902?q=80&w=2000&auto=format&fit=crop')" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent" />
             </div>
